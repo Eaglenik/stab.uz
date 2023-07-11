@@ -34,6 +34,19 @@ $(document).ready(function() {
     }
   });
 });
+// fixed header
+$(document).ready(function() {
+  $(window).scroll(function() {
+    var scrolled = $(window).scrollTop();
+    if (scrolled >= 70) {
+      $('.header-nav-fixed').css('position', 'fixed');
+      $('.header-nav-fixed').css('padding', '10px 20px');
+    } else {
+      $('.header-nav-fixed').css('position', 'relative');
+      $('.header-nav-fixed').css('padding', '0');
+    }
+  });
+});
 //  sliders
 $(document).ready(function(){
   $('.main-slider').owlCarousel({
@@ -108,7 +121,8 @@ $(document).ready(function(){
           loop: true
         },
         576:{
-          items:4
+          items:4,
+          loop: true
         },
         768:{
           items:5
@@ -610,7 +624,6 @@ $(document).ready(function() {
     $(this).closest(".custom-offcanvas").removeClass("open");
   });
 });
-
 $(document).ready(function() {
   $('.category-filter_nav').each(function() {
     var filterNav = $(this);
@@ -632,29 +645,28 @@ $(document).ready(function() {
     })
   });
 });
-const categoryList = document.querySelector('.category-nav_list');
-let isDragging = false;
-let startScrollX = 0;
-let startX = 0;
 
-categoryList.addEventListener('touchstart', (event) => {
-  if (event.target.tagName.toLowerCase() === 'a') return;
 
-  isDragging = true;
-  startScrollX = categoryList.scrollLeft;
-  startX = event.touches[0].pageX;
-});
+// PRODUCT CARD
 
-categoryList.addEventListener('touchmove', (event) => {
-  if (!isDragging) return;
+// similar categoies
+$(document).ready(function() {
+  var maxShown = 15;
+  var $links = $('.similar-categories_link');
+  var $btn = $('.similar-categories_morebtn');
 
-  const x = event.touches[0].pageX;
-  const distance = x - startX;
-  categoryList.scrollLeft = startScrollX - distance;
-});
+  if ($links.length > maxShown) {
+    $links.slice(maxShown).hide();
+    $btn.show();
+  } else {
+    $btn.hide();
+  }
 
-categoryList.addEventListener('touchend', () => {
-  isDragging = false;
+  $btn.click(function(e) {
+    e.preventDefault();
+    $links.show();
+    $btn.hide();
+  });
 });
 
 

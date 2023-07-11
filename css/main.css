@@ -122,7 +122,7 @@ body{
   display: block;
   content: '';
   width: 8px; height: 8px;
-  top: 66%; right: 20px;
+  top: 60%; right: 5px;
   margin-top: -3px;
   border-bottom: 1px solid var(--green);
   border-right: 1px solid var(--green);
@@ -281,10 +281,10 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 /* header */
 .header-info{
-  padding: 25px 0;
+  padding: 25px 0 0 0;
 }
 .header{
-  margin-bottom: 65px;
+  margin-bottom: 35px;
 }
 .header a{
   font-size: 18px;
@@ -358,10 +358,18 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   line-height: 25px;
   color: rgba(23, 23, 23, 0.7);
 }
-.header-nav{
-  position: sticky;
+.header-info{
+  padding-bottom: 20px;
+}
+.header-nav-fixed{
+  position: relative;
   z-index: 5;
-  top: 30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 0;
+  background: var(--white2);
+  transition: all ease 0.3s;
 }
 .header-menu svg{
   fill: var(--grey2);
@@ -530,8 +538,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   line-height: 140%;
 }
 .offcanvas-top{
-  top: 140px;
-  height: 80vh;
+  top: 171px;
+  height: 100vh;
   padding-top: 30px;
   transform: translateY(-0px);
   background: var(--white);
@@ -545,13 +553,13 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   position: relative;
 }
 .offcanvas-top_sidebar{
-  top: 120px;
+  top: 82px;
 }
 .tab-links{
   min-width: 360px;
   overflow: scroll;
   padding-right: 25px;
-  height: 70vh;
+  height: 90vh;
   position: sticky;
   top: 0;
 }
@@ -1324,6 +1332,9 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   padding: 0 40px;
   margin-bottom: 70px;
 }
+.footer a:hover{
+  color: var(--yellow);
+}
 .footer h6,
 .footer-contact a,
 .footer-contact span{
@@ -1798,6 +1809,37 @@ input[type="range"]::-moz-range-thumb {
 }
 .category-nav_list li{
   white-space: nowrap;
+}
+/* PRODUCT CARD */
+.similar-categories{
+  margin-bottom: 100px;
+}
+.similar-categories_list{
+  display: flex; 
+  flex-wrap: wrap;
+  row-gap: 15px;
+}
+.similar-categories_link{
+  display: block;
+  width: 32%;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+}
+.similar-categories_link:hover{
+  color: var(--green);
+}
+.similar-categories_morebtn{
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 30px;
 }
 
 

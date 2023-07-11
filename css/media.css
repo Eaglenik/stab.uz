@@ -1,10 +1,4 @@
 @media (max-width: 1200px){
-  .offcanvas-top{
-    top: 200px;
-  }
-  .offcanvas-top_sidebar{
-    top: 120px;
-  }
   .healthy-info_card{
     flex-direction: column;
     text-align: center;
@@ -34,6 +28,9 @@
   }
   .category-goods{
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .header-nav-fixed{
+    padding: 20px 0;
   }
 }
 @media (max-width:992px){
@@ -146,12 +143,6 @@
   .header{
     margin-bottom: 30px;
   }
-  .offcanvas-top{
-    top: 130px;
-  }
-  .offcanvas-top_sidebar{
-    top: 105px;
-  }
   .tab-links{
     min-width: 270px;
     padding-right: 10px;
@@ -260,7 +251,7 @@
       width: 100px;
   }
   .header-info{
-      padding: 15px 0 10px 0;
+      padding: 10px 0;
   }
   .header-menu a{
       min-width: 18px;
@@ -281,9 +272,7 @@
   .main-slider .owl-dots{
     gap: 10px;
   }
-  .offcanvas-top{
-    top: 100px;
-  }
+
   .main-slider .owl-dots{
     display: none;
   }
@@ -364,7 +353,6 @@
     align-items: center;
     margin-bottom: 30px;
   }
-  
   .mailing-form_check p{
     font-size: 13px;
   }
@@ -483,7 +471,14 @@
   }
   .custom-select-trigger{
     font-size: 13px;
-    padding: 9px;
+    padding: 6px 20px 10px 20px;
+  }
+  .custom-option::before{
+    margin-top: 1px;
+    font-size: 10px;
+  }
+  .custom-select-trigger:after{
+    top: 55%;
   }
   .custom-options{
     padding: 10px;
@@ -498,6 +493,9 @@
   }
   .custom-options{
     width: 150px;
+  }
+  .header-nav-fixed{
+    padding: 10px 0;
   }
 }
 @media (max-width:480px){
