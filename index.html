@@ -41,7 +41,7 @@
             <a href="/" class="header-logo d-xl-none d-block">
                 <img src="image/mainLogo.png" alt="">
             </a>
-            <div class="header-info_benefit d-sm-flex d-none align-items-center gap-md-4 gap-2">
+            <div class="header-info_benefit d-md-flex d-none align-items-center gap-md-4 gap-2">
                 <a href="#!" class="d-flex align-items-center"><span class="d-lg-flex d-none">%</span>Скидки</a>
                 <a href="#!">Рассрочка</a>
             </div>
@@ -60,37 +60,50 @@
                 <a href="#!">Тендеры</a>
                 <a href="#!">Контакты</a>
             </div>
-            <div class="header-info_settings d-flex justify-content-center align-items-center gap-md-4 gap-3">
-                <div class="dropdown ">
-                    <a href="tel:+998781138885">+998 78 113 88 85</a>
-                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="d-flex align-items-center gap-3">
+                <a href="/" class="d-md-none d-block"><img src="image/icons/mobile-telegram.png" alt=""></a>
+                <div class="dropdown mobile-phone_drd d-sm-none d-block">
+                    <button class="dropdown-toggle mobile-phone" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="image/icons/mobile-phone.png" alt="">
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="tel:+998712078885">+998 71 207 88 85</a></li>
-                      <li><p class="dropdown-item">Пн — сб  ·  9 — 20</p></li>
+                        <li class="mb-2"><a href="tel:+998781138885">+998 78 113 88 85</a></li>
+                        <li><a class="dropdown-item" href="tel:+998712078885">+998 71 207 88 85</a></li>
+                        <li><p class="dropdown-item">Пн — сб  ·  9 — 20</p></li>
                     </ul>
                 </div>
-                <div class="dropdown">
-                    <a href="#!">UZS</a>
-                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">USD</a></li>
-                      <li><a class="dropdown-item" href="#">RUB</a></li>
-                    </ul>
+                <a href="/" class="d-none"><img src="image/icons/mobile-phone.png" alt=""></a>
+                <div class="header-info_settings d-flex justify-content-center align-items-center gap-md-4 gap-3">
+                    <div class="dropdown d-sm-block d-none">
+                        <a href="tel:+998781138885">+998 78 113 88 85</a>
+                        <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="tel:+998712078885">+998 71 207 88 85</a></li>
+                          <li><p class="dropdown-item">Пн — сб  ·  9 — 20</p></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#!">UZS</a>
+                        <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">USD</a></li>
+                          <li><a class="dropdown-item" href="#">RUB</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown d-md-block d-none">
+                        <a href="#!">Ру</a>
+                        <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">O‘z</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="dropdown d-md-block d-none">
-                    <a href="#!">Ру</a>
-                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">O‘z</a></li>
-                    </ul>
+                <div class="burger d-md-none d-block" data-bs-toggle="offcanvas" data-bs-target="#burger-mobile" aria-controls="burger-mobile">
+                    <div class="icon-circle"></div>
+                    <div class="icon"></div>
                 </div>
-            </div>
-            <div class="burger d-md-none d-block" data-bs-toggle="offcanvas" data-bs-target="#burger-mobile" aria-controls="burger-mobile">
-                <div class="icon-circle"></div>
-                <div class="icon"></div>
             </div>
         </div>
         <div class="header-nav-fixed">
@@ -3607,7 +3620,7 @@
             <p>Пользовательское соглашение</p>
         </div>
     </footer>
-    <section class="footer-menu d-md-none d-flex justify-content-center align-items-center gap-5">
+    <section class="footer-menu d-md-none d-flex justify-content-sm-center justify-content-between align-items-center gap-sm-5 gap-0">
         <a href="#!" class="footer-menu_item" data-bs-toggle="offcanvas" data-bs-target="#mobile-catalog" aria-controls="mobile-catalog">
             <svg width="29" height="29" viewBox="0 0 29 29" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.6429 1H2.92857C1.86345 1 1 1.86345 1 2.92857V10.6429C1 11.708 1.86345 12.5714 2.92857 12.5714H10.6429C11.708 12.5714 12.5714 11.708 12.5714 10.6429V2.92857C12.5714 1.86345 11.708 1 10.6429 1Z"  stroke-width="2"/>
@@ -3722,7 +3735,7 @@
             <button id="backButton">Вернуться назад</button>
         </div>
     </div>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="burger-mobile" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="burger-mobile" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header d-flex justify-content-end">
           <button type="button" class="icon-xmark" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
       </div>

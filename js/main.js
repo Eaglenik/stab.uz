@@ -219,6 +219,104 @@ $(document).ready(function(){
       }
     }
   });
+  // product photo slider
+  var windowWidth = $(window).width();
+  var slideCount = $('.product-photo_slider .product-photo_small').length;
+  if (windowWidth < 576) {
+    var slider = $('.product-photo_slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      infinite: false,
+      vertical: false,
+      responsive: [
+        {
+          breakpoint: 576,
+          settings: {
+            dots: false
+          }
+        }
+      ]
+    });
+    $('.product-photo_slider .product-photo_small').addClass('modal')
+  } else {
+    var slider = $('.product-photo_slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      infinite: false,
+      vertical: true,
+      focusOnSelect: true
+    });
+    $('.product-photo_slider .product-photo_small').click(function() {
+      var smallImage = $(this).find('img:last').attr('src');
+      $('.product-photo_large img:last').attr('src', smallImage);
+    });
+    $('.product-photo_slider .product-photo_small:first').trigger('click');
+    $('.product-photo_slider .product-photo_small').first().addClass('select');
+    $('.product-photo_slider .product-photo_small').click(function() {
+      $('.product-photo_slider .product-photo_small').removeClass('select');
+      $(this).addClass('select');
+    });
+  }
+  slider.on('init setPosition', function() {
+    var currentSlideNumber = slider.slick('slickCurrentSlide') + 1;
+    $('.product-photo_slider-count').text(currentSlideNumber + ' / ' + slideCount);
+  });
+})
+// product photo modal slider
+$(document).ready(function(){
+  $('.product-photo_modal--slider_large').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    fade: false,
+    adaptiveHeight: true,
+    infinite: false,
+   useTransform: true,
+    speed: 400,
+    cssEase: 'cubic-bezier(0.77, 0, 0.18, 1)',
+  });
+  $('.product-photo_modal--slider_small').ready(function() {
+      $('.product-photo_modal--slider_small .slick-slide.slick-current').addClass('is-active');
+    }).slick({
+      slidesToShow: 11,
+      slidesToScroll: 1,
+      dots: false,
+      focusOnSelect: false,
+      infinite: false,
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+        }
+      }, {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 4,
+       }
+      }]
+    });
+    $('.product-photo_modal--slider_large').on('afterChange', function(event, slick, currentSlide) {
+      $('.product-photo_modal--slider_small').slick('slickGoTo', currentSlide);
+      var currrentNavSlideElem = '.product-photo_modal--slider_small .slick-slide[data-slick-index="' + currentSlide + '"]';
+      $('.product-photo_modal--slider_small .slick-slide.is-active').removeClass('is-active');
+      $(currrentNavSlideElem).addClass('is-active');
+    });
+  $('.product-photo_modal--slider_small').on('click', '.slick-slide', function(event) {
+    event.preventDefault();
+    var goToSingleSlide = $(this).data('slick-index');
+    $('.product-photo_modal--slider_large').slick('slickGoTo', goToSingleSlide);
+  });
+  // show modal
+  $('.product-photo_large, .product_modal--slider_closebtn, .product-photo_small.modal').on('click', function(){
+    $('.product_modal--slider').toggleClass('show');
+    if ($('.product_modal--slider').hasClass('show')) {
+      $("body").css("overflow", "hidden");
+    } else {
+      $("body").css("overflow", "auto");
+    }
+  });
 })
 // custom tab sidebar
 $(document).ready(function() {
@@ -479,7 +577,6 @@ $(document).ready(function(){
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 })
-
 // category filter list
 $(document).ready(function() {
   $('.category-filter_nav').each(function() {
@@ -568,6 +665,7 @@ $(".custom-option").on("click", function() {
 // UPDATE GOODS FILTER !
 function updateGoods() {
   var selectedPerformances = getSelectedPerformances();
+  
   $.ajax({
     url: 'update-goods.php', 
     method: 'POST',
@@ -601,7 +699,6 @@ $('.category-filter_nav input[type="checkbox"]').on('change', function() {
 $('.category-price input[type="range"]').on('change', function() {
   updateGoods();
 });
-
 function deleteCategoryFilterOn768() {
   var screenWidth = window.innerWidth;
   if (screenWidth < 768) {
@@ -645,28 +742,77 @@ $(document).ready(function() {
     })
   });
 });
-
-
-// PRODUCT CARD
+// PRODUCT
 
 // similar categoies
 $(document).ready(function() {
   var maxShown = 15;
   var $links = $('.similar-categories_link');
   var $btn = $('.similar-categories_morebtn');
-
   if ($links.length > maxShown) {
     $links.slice(maxShown).hide();
     $btn.show();
   } else {
     $btn.hide();
   }
-
   $btn.click(function(e) {
     e.preventDefault();
     $links.show();
     $btn.hide();
   });
+});
+// product
+$('.product-content_func--btns').on('click', function() {
+  $(this).toggleClass("active")
+})
+$('.product-copy_vendorcodeBtn').on('click', function() {
+  var textToCopy = $('#product-vendorcode').text();
+  $('<textarea>').val(textToCopy).appendTo('body').select();
+  document.execCommand('copy');
+  $('textarea').remove();
+  // console.log('Артикул скопирован: ' + textToCopy);
+});
+$(document).ready(function() {
+  var isReviewsActive = $('.product-reviews_link').hasClass('active');
+  if (isReviewsActive) {
+    $('.product-add_review--btn').removeClass('d-none');
+  } else {
+    $('.product-add_review--btn').addClass('d-none');
+  }
+  $('.tabs-links').on('click', function() {
+    $('.tabs-links').removeClass('active');
+    $(this).addClass('active');
+    var isReviewsActive = $('.product-reviews_link').hasClass('active');
+    if (isReviewsActive) {
+      $('.product-add_review--btn').removeClass('d-none');
+    } else {
+      $('.product-add_review--btn').addClass('d-none');
+    }
+  });
+});
+// product description
+$(document).ready(function() {
+  $('#product-description_moreBtn').click(function() {
+    $(this).siblings('.product-description_text').toggleClass('show');
+    $(this).hide();
+  });
+});
+// product chatacters
+$(document).ready(function() {
+  var trCount = $('.product-characteristics table tbody tr').length;
+  if (trCount > 7) {
+    $('.product-characteristics table tbody tr:gt(6)').hide();
+    $(this).show();
+  }
+  $('#product-characteristics_moreBtn').click(function() {
+    $('.product-characteristics table tbody tr:gt(6)').show();
+    $(this).hide();
+  });
+});
+$(document).ready(function() {
+  if ($(window).width() < 768) {
+    $('#productReviews').addClass('active show');
+  }
 });
 
 
