@@ -43,7 +43,21 @@
   .product-photo_large{
     width: 390px;
   }
-  
+  .product-photo_modal--slider_large{
+    height: 500px;
+  }
+  .product-photo_modal--slider_large .slick-slide img{
+    height: 500px;
+    object-fit: contain;
+  }
+  .basket-product_functs{
+    flex-direction: column-reverse;
+    gap: 10px;
+    align-items: end;
+  }
+  .basket-product_folltrash{
+    display: flex;
+  }
 }
 @media (max-width:992px){
   .pickup-points_map iframe{
@@ -102,7 +116,7 @@
     display: none;
   }
   .footer{
-    margin-bottom: 50px;
+    margin-bottom: 110px;
   }
   .categories-grid{
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -146,6 +160,49 @@
   .product-buy_btn,
   .product-buyinclick_btn{
     width: 42%;
+  }
+  .product_modal--slider{
+    padding: 100px 20px;
+  }
+  .product-photo_modal--slider_large{
+    position: relative !important;
+  }
+  .product-photo_modal--slider_large .slick-prev{
+    left: 20px;
+  }
+  .product-photo_modal--slider_large .slick-next{
+    right: 20px;
+  }
+  .product_modal--slider_closebtn{
+    top: 35px;
+    right: 20px;
+  }
+  .basket-form{
+    flex-direction: column;
+  }
+  .basket-product_functs{
+    flex-direction: row;
+    align-items: start;
+  }
+  .basket-order,
+  .basket-register{
+    max-width: unset;
+    width: 100%;
+  }
+  .basket-order_fixed{
+    width: 100%;
+    padding: 15px 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  .basket-order_button{
+    max-width: 280px;
   }
 }
 @media (max-width:768px){
@@ -284,8 +341,36 @@
   .product-buy_btn{
     padding: 14px;
   }
+  #addReviewProductModal .modal-content{
+    margin-top: 40px;
+  }
+  .product-review_inpt,
+  .add-review_product--form_footer button{
+    width: 100%;
+  }
+  .add-review_product--form_footer button{
+    margin-top: 10px;
+  }
+  #product-review_counter--text, .product-review_download--imgs p, .add-review_product--form_footer p{
+    max-width: unset;
+  }
+  .login_inpts{
+    width: 100% !important;
+  }
+  .sign-up_footer{
+    width: 100%;
+  }
+  .basket-order_fixed{
+    bottom: 70px;
+  }
+  .mailing{
+    margin-bottom: 180px;
+  }
 }
 @media (max-width:576px){
+  .product_modal--slider{
+    padding: 100px 0;
+  }
   .useful, .popular-brands{
     margin-bottom: 40px;
   }
@@ -437,6 +522,7 @@
   .mailing{
     padding: 30px 20px;
     margin: 50px auto;
+    margin-bottom: 200px;
   }
   .mailing-form button{
     text-align: start;
@@ -635,6 +721,71 @@
   .product-add_btns{
     padding: 0 5px;
   }
+  .product-photo_modal--slider_large,
+  .product-photo_modal--slider_large .slick-slide img{
+    height: 360px;
+  }
+  .product-photo_modal--slider_small{
+    bottom: unset;
+  }
+  .login h6{
+    font-size: 24px;
+  }
+  .login{
+    border: unset;
+    box-shadow: unset;
+    margin-bottom: 70px;
+    padding: 20px;
+  }
+  .sign-up_footer p{
+    font-size: 16px;
+  }
+  #success_div{
+    padding: 15px;
+    font-size: 17px;
+    gap: 20px;
+    right: 20px;
+    top: 60px;
+  }
+  #success_div img{
+    width: 30px;
+    height: 30px;
+  }
+  .basket-order_fixed{
+    align-items: center;
+    gap: 5px;
+  }
+  .basket-order_select--legalFace label{
+    font-size: 14px;
+  }
+  .basket-order_button{
+    font-size: 17px;
+    padding: 10px;
+  }
+  .basket-product{
+    flex-direction: column;
+  }
+  .goods_oldPrice{
+    font-size: 15px;
+  }
+  .basket-order_adapt{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+  .empty-basket{
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .empty-basket img{
+    margin-bottom: 20px;
+  }
+  .product-photo_brand{
+    left: unset;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+  }
 }
 @media (max-width:480px){
   .header-info_settings .dropdown:first-of-type{
@@ -649,6 +800,9 @@
   .procuct-content_price{
     flex-direction: column;
     gap: 10px;
+  }
+  .basket-order_button{
+    max-width: 150px;
   }
 }
 @media (max-width:380px){
