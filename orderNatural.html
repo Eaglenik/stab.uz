@@ -16,6 +16,7 @@
     <a id="phone" class="phone icon-phone" data-bs-toggle="modal" data-bs-target="#exampleModal"></a>
     <a id="message" class="message icon-message"></a>
     <a id="top" class="show"><img src="image/icons/arrTop.png" alt=""></a>
+    <div class="" id="success_div">Товар добавлен в корзину <img src="image/icons/arrTop.png" alt=""></div>
     <!-- Модальное окно -->
     <div class="modal fade phone" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -336,7 +337,7 @@
                         <p>Избранное</p>
                         <div class="menu-count">2</div>                       
                     </a>
-                    <a href="basket.html" class="basket-btn_nav active">
+                    <a href="basket.html" class="basket-btn_nav">
                         <svg width="30" height="27" viewBox="0 0 30 27" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.104 23.0003C10.5464 23.0003 10.0945 23.448 10.0945 24.0002C10.0945 24.5523 10.5464 25 11.104 25C11.6617 25 12.1136 24.5523 12.1136 24.0002C12.1136 23.448 11.6617 23.0003 11.104 23.0003ZM8.07539 24.0002C8.07539 22.3433 9.43143 21.0003 11.104 21.0003C12.7766 21.0003 14.1327 22.3433 14.1327 24.0002C14.1327 25.657 12.7766 27 11.104 27C9.43143 27 8.07539 25.657 8.07539 24.0002Z"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M23.2206 23.0003C22.6629 23.0003 22.211 23.448 22.211 24.0002C22.211 24.5523 22.6629 25 23.2206 25C23.7782 25 24.2301 24.5523 24.2301 24.0002C24.2301 23.448 23.7782 23.0003 23.2206 23.0003ZM20.1919 24.0002C20.1919 22.3433 21.548 21.0003 23.2206 21.0003C24.8932 21.0003 26.2492 22.3433 26.2492 24.0002C26.2492 25.657 24.8932 27 23.2206 27C21.548 27 20.1919 25.657 20.1919 24.0002Z"/>
@@ -349,73 +350,202 @@
             </div>
         </div>
     </header>
-    <!-- basket -->
-    <section class="basket container">
+    <!-- order -->
+    <section class="order container">
         <div class="title-box d-flex  gap-1 align-items-end">
-            <h6 class="title">Корзина</h6>
-            <p class="total_quantity"></p>
-            <p>товара</p>
+            <h6 class="title">Оформление заказа</h6>
         </div>
-        <!-- ACTION МЕНЯЕТСЯ В ЗАВИСИМОСТИ ОТ ТОГО ЭТО ЮР.ЛИЦО ИЛИ ФИЗ.ЛИЦО, МЕНЯЕТСЯ ЭТО В JS НА 1154 СТРОКЕ -->
-        <form action="orderNatural.html" class="basket-form d-flex justify-content-between gap-4">
-            <div class="w-100">
-                <div class="mb-5 d-flex justify-content-between flex-sm-row flex-column gap-sm-0 gap-3">
-                    <div class="basket-products_selectAll d-flex align-items-center gap-2">
-                        <input type="checkbox" id="selectAll" class="basket-product_checkbox">
-                        <label for="selectAll" >Выбрать все</label>
+        <form action="url" class="order-form d-flex flex-lg-row flex-column justify-content-between">
+            <div class="order-left">
+                <div id="paymentMethod">
+                    <div class="order-point active" id="paymentMethodPoint">
+                        <span>1</span>
+                        <p>Способ оплаты </p>
                     </div>
-                    <p class="basket-product_deliveryP">Доставка осуществляется в течение 3 дней</p>
-                </div>
-                <div id="basket-products">
-                    <!-- СНИЗУ ШАБЛОН, НЕ УДАЛЯЙ -->
-                    <!-- <div class="basket-product d-flex justify-content-between">
-                        <input type="checkbox" class="basket-product_checkbox d-flex justify-content-between">
-                        <div class="d-flex">
-                            <div class="basket-product_img"><img src="image/product/Rectangle 1161.png" alt=""></div>
-                            <p class="basket-product_name">Швейная машина CHAYKA 590</p>
-                        </div>
-                        <div class="basket-product_functs d-flex justify-content-between align-items-start gap-4">
-                            <div class="basket-product_btns">
-                                <button class="basket-product_minus disabled" type="button"><svg width="30" height="30" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.2175 17.2175C15.8889 18.5461 14.1962 19.4509 12.3534 19.8175C10.5105 20.184 8.60041 19.9959 6.86451 19.2769C5.12861 18.5578 3.64491 17.3402 2.60104 15.7779C1.55717 14.2157 1 12.3789 1 10.5C1 8.62108 1.55716 6.78435 2.60104 5.22208C3.64491 3.65982 5.12861 2.44218 6.86451 1.72314C8.6004 1.00411 10.5105 0.81598 12.3534 1.18254C14.1962 1.5491 15.8889 2.45389 17.2175 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                    <path d="M6 11V10H15V11H6Z" fill="#999999"/>
-                                </svg>
-                                </button>
-                                <input value="1" type="text" class="item_count" disabled></input>
-                                <button class="basket-product_plus"  type="button"><svg width="30" height="30" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2.78249 17.2175C4.11108 18.5461 5.80382 19.4509 7.64664 19.8175C9.48946 20.184 11.3996 19.9959 13.1355 19.2769C14.8714 18.5578 16.3551 17.3402 17.399 15.7779C18.4428 14.2157 19 12.3789 19 10.5C19 8.62108 18.4428 6.78435 17.399 5.22208C16.3551 3.65982 14.8714 2.44218 13.1355 1.72314C11.3996 1.00411 9.48946 0.81598 7.64664 1.18254C5.80382 1.5491 4.11109 2.45389 2.78249 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                    <path d="M5 11V10H14V11H5Z" fill="#999999"/>
-                                    <path d="M10 15H9L9 6L10 6L10 15Z" fill="#999999"/>
-                                </svg>                                
-                                </button>
+                    <div class="d-flex">
+                        <div class="order-line" id="paymentMethodLine"></div>
+                        <div class="order-inpts">
+                            <div class="order-radio">
+                                <input class="order-payment_method" type="radio" value="onlinePayment" id="onlinePayment" name="paymentMethod">
+                                <label for="onlinePayment">
+                                    <h6>Онлайн-оплата</h6>
+                                    <p>Доступна оплата банковскими картами UzCard, Humo</p>
+                                </label>
                             </div>
-                            <div>
-                                <h6 class="basket-product_currentPrice">1 529 500 сум</h6>
-                                <p class="goods_oldPrice basket-product_oldPrice" name="actualGoodsOldPrice">17 020 000 сум</p>
-                                <div class="basket-product_folltrash d-flex justify-content-end gap-3">
-                                    <button type="button" class="icon-heart">
-                                    </button>
-                                    <button type="button" class="remove_from_basket">
-                                        <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.40802 3.70312C8.78572 2.62457 9.80418 1.8519 11.0013 1.8519C12.1984 1.8519 13.2169 2.62457 13.5946 3.70312H8.40802ZM6.50979 3.70312C6.93471 1.59022 8.78416 0 11.0013 0C13.2184 0 15.0679 1.59022 15.4928 3.70312H19.25C20.7688 3.70312 22 4.94681 22 6.48097C22 8.01514 20.7688 9.25882 19.25 9.25882H2.75C1.23122 9.25882 0 8.01514 0 6.48097C0 4.94681 1.23122 3.70312 2.75 3.70312H6.50979ZM2.75 5.55502C2.24374 5.55502 1.83333 5.96959 1.83333 6.48097C1.83333 6.99236 2.24374 7.40692 2.75 7.40692H19.25C19.7563 7.40692 20.1667 6.99236 20.1667 6.48097C20.1667 5.96958 19.7563 5.55502 19.25 5.55502H2.75ZM3.66667 10.1855C4.17293 10.1855 4.58333 10.6001 4.58333 11.1115V22.2229C4.58333 22.7343 4.99374 23.1488 5.5 23.1488H16.5C17.0063 23.1488 17.4167 22.7343 17.4167 22.2229V11.1115C17.4167 10.6001 17.8271 10.1855 18.3333 10.1855C18.8396 10.1855 19.25 10.6001 19.25 11.1115V22.2229C19.25 23.757 18.0188 25.0007 16.5 25.0007H5.5C3.98122 25.0007 2.75 23.757 2.75 22.2229V11.1115C2.75 10.6001 3.16041 10.1855 3.66667 10.1855ZM9.85547 13.6582C10.2352 13.6582 10.543 13.9126 10.543 14.2264V21.4235C10.543 21.7374 10.2352 21.9917 9.85547 21.9917C9.47577 21.9917 9.16797 21.7374 9.16797 21.4235V14.2264C9.16797 13.9126 9.47577 13.6582 9.85547 13.6582ZM15.125 12.5011C15.125 12.1176 14.8172 11.8066 14.4375 11.8066C14.0578 11.8066 13.75 12.1176 13.75 12.5011V21.2976C13.75 21.6812 14.0578 21.9921 14.4375 21.9921C14.8172 21.9921 15.125 21.6812 15.125 21.2976V12.5011Z"/>
-                                        </svg>
-                                    </button>
+                            <div class="order-radio">
+                                <input class="order-payment_method" type="radio" value="installmentPlan" id="installmentPlan" name="paymentMethod">
+                                <label for="installmentPlan">
+                                    <h6>Рассрочка</h6>
+                                    <div class="installment-plan_banks">
+                                        <div class="installment-plan_bank">
+                                            <input class="installment-bank" type="radio" value="anorbank" id="anorbank" name="installmentPlanBank">
+                                            <label for="anorbank">
+                                                <img src="image/banks/image 85.png" alt="">
+                                            </label>
+                                        </div>
+                                        <div class="installment-plan_bank">
+                                            <input class="installment-bank" type="radio" value="alifbank" id="alifbank" name="installmentPlanBank">
+                                            <label for="alifbank">
+                                                <img src="image/banks/image 85 (1).png" alt="">
+                                            </label>
+                                        </div>
+                                        <div class="installment-plan_bank">
+                                            <input class="installment-bank" type="radio" value="intendbank" id="intendbank" name="installmentPlanBank">
+                                            <label for="intendbank">
+                                                <img src="image/banks/image 85 (2).png" alt="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="order-radio">
+                                <input class="order-payment_method" type="radio" value="uponКeceipt" id="uponКeceipt" name="paymentMethod">
+                                <label for="uponКeceipt">
+                                    <h6>При получении заказа</h6>
+                                    <p>Возможна оплата наличными и банковскими картами</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="deliveryMethod">
+                    <div class="order-point" id="deliveryMethodPoint">
+                        <span>2</span>
+                        <p>Способ доставки</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="order-line" id="deliveryMethodLine"></div>
+                        <div class="order-inpts">
+                            <div class="order-radio">
+                                <input class="order-delivery_inpt" type="radio" value="courierDelivery" id="courierDelivery" name="deliveryMethod">
+                                <label for="courierDelivery">
+                                    <h6>Доставка курьером</h6>
+                                    <span>30 000 сум</span>
+                                    <p>При заказе с выше 500 000 сум — бесплатно. Доставка осуществляется в течение 1–3 дней в зависимости от загруженности курьерской службы</p>
+                                </label>
+                            </div>
+                            <div class="order-radio">
+                                <input class="order-delivery_inpt" type="radio" value="expressDelivery" id="expressDelivery" name="deliveryMethod">
+                                <label for="expressDelivery">
+                                    <h6>Срочная доставка </h6>
+                                    <span>50 000 сум</span>
+                                    <p>Доставка осуществляется в течение 10 часов при условии полной оплаты заказа</p>
+                                </label>
+                            </div>
+                            <div class="order-radio">
+                                <input class="order-delivery_inpt" type="radio" value="oversizedDelivery" id="oversizedDelivery" name="deliveryMethod">
+                                <label for="oversizedDelivery">
+                                    <h6>Доставка крупногабаритного груза</h6>
+                                    <p>Стоимость доставки обговаривается индивидуально после оформления и полной оплаты заказа</p>
+                                </label>
+                            </div>
+                            <div class="order-radio">
+                                <input class="order-delivery_inpt" type="radio" value="pickup" id="pickup" name="deliveryMethod">
+                                <label for="pickup">
+                                    <h6>Самовывоз</h6>
+                                    <p>Время работы пунктов самовывоза с 10.00 до 20.00 без выходных и перерыва</p>
+                                    <i>Выберите пункт откуда будет забираться заказ</i>
+                                    <div class="order-pickups">
+                                        <div class="order-pickup">
+                                            <label for="pickupTashkent" class="pickup-point">
+                                                <div class="d-flex gap-2">
+                                                    <input class="order-pickup_inpt" type="radio" value="pickupCityTashkent" id="pickupTashkent" name="deliveryMethodCity">
+                                                    <h6>Ташкент</h6>
+                                                </div>
+                                                <p>Алмазарский район, ул. Уста Ширин, 134, магазин № 12</p>
+                                            </label>
+                                        </div>
+                                        <div class="order-pickup">
+                                            <label for="pickupTashkent2" class="pickup-point">
+                                                <div class="d-flex gap-2">
+                                                    <input class="order-pickup_inpt" type="radio" value="pickupCityTashkent2" id="pickupTashkent2" name="deliveryMethodCity">
+                                                    <h6>Ташкент</h6>
+                                                </div>
+                                                <p>Яшнабадский район, строительный рынок «Куйлюк», павильон 2, магазин № 63</p>
+                                            </label>
+                                        </div>
+                                        <div class="order-pickup">
+                                            <label for="pickupSamarkand" class="pickup-point">
+                                                <div class="d-flex gap-2">
+                                                    <input class="order-pickup_inpt" type="radio" value="pickupCitySamarkand" id="pickupSamarkand" name="deliveryMethodCity">
+                                                    <h6>Самарканд</h6>
+                                                </div>
+                                                <p>ул. Туркистон, 62А, махалля Юкорий Хужа</p>
+                                            </label>
+                                        </div>
+                                        <div class="order-pickup">
+                                            <label for="pickupBukhara" class="pickup-point">
+                                                <div class="d-flex gap-2">
+                                                    <input class="order-pickup_inpt" type="radio" value="pickupCityBukhara" id="pickupBukhara" name="deliveryMethodCity">
+                                                    <h6>Бухара</h6>
+                                                </div>
+                                                <p>ул. Шохруб, 115 (ориентир — мечеть Файзобад)</p>
+                                            </label>
+                                        </div>
+                                        <div class="order-pickup">
+                                            <label for="pickupAndojon" class="pickup-point">
+                                                <div class="d-flex gap-2">
+                                                    <input class="order-pickup_inpt" type="radio" value="pickupCityAndojon" id="pickupAndojon" name="deliveryMethodCity">
+                                                    <h6>Андижан</h6>
+                                                </div>
+                                                <p>ул. Пирмухамедова, 96, этаж 2, «Шинам», магазин № 187</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="orderRecipient">
+                    <div class="order-point" id="orderRecipientPoint">
+                        <span>3</span>
+                        <p>Получатель заказа</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="order-line" id="orderRecipientLine"></div>
+                        <div class="order-recipient">
+                            <p class="order-sign-in"><a href="sign-in.html">Авторизуйтесь</a>, если совершали покупки на Stab.uz</p>
+                            <div class="order-recipient_inpts">
+                                <div class="order-recipient_inpt">
+                                    <p>Имя *</p>
+                                    <input type="text" id="orderRecipientName" required>
+                                </div>
+                                <div class="order-recipient_inpt">
+                                    <p>Фамилия *</p>
+                                    <input type="text" id="orderRecipientSurname" required>
+                                </div>
+                                <div class="order-recipient_inpt">
+                                    <p>Номер телефона *</p>
+                                    <input type="text" id="orderRecipientPhone" data-phone-pattern = "" required>
+                                </div>
+                                <div class="order-recipient_inpt">
+                                    <p>Мы пришлем уведомление о заказе на указанный вами телефон</p>
+                                </div>
+                                <div class="order-recipient_inpt">
+                                    <p>Примечание</p>
+                                    <textarea name="note" maxlength="600" oninput="autoExpand(this)"></textarea>
                                 </div>
                             </div>
+                            <div class="order-radio mt-4">
+                                <input type="checkbox" value="subscribeNews" id="subscribeNews" name="subscribeNews" >
+                                <label for="subscribeNews">
+                                    <p>Подпишитесь на новости и акции нашей компании. Вы сможете одними из первых узнавать о новых товарах, скидках, акциях. Будьте всегда в курсе!</p>
+                                </label>
+                            </div>
                         </div>
-                    </div> -->
-                </div>      
-            </div>
-            <div>
-                <div class="basket-order">
-                    <h6>Ваш заказ</h6>
-                    <div class="basket-order_delivery--text mb-4" id="basketOrderDeliveryTextFalse">
-                        <img src="image/icons/Ellipse 347.png" alt="">
-                        <p>Бесплатная доставка при заказе свыше <i id="deliverySumm">500 000</i> сум после полной оплаты товара<br>Осталось <i id="leftDelivery"></i> сум</p>
                     </div>
-                    <div class="basket-order_delivery--text mb-4" id="basketOrderDeliveryTextTrue">
-                        <img src="image/icons/cheked.png" alt="">
-                        <p>Вам доступна бесплатная доставка</p>
+                </div>
+                <div class="order-point" id="checkout">
+                    <span>4</span>
+                    <p>Оформите заказ</p>
+                </div>
+            </div>
+            <div class="order-right">
+                <div class="basket-order order-checkout">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h6>Ваш заказ</h6>
+                        <a href="basket.html" class="d-flex align-items-center gap-2 in-basketbtn"><img src="image/icons/greenArrLeft.png" alt="">В корзину</a>
                     </div>
                     <div class="basket-order_p d-flex justify-content-between">
                         <p>Товары / <i class="total_quantity"></i> шт</p>
@@ -425,352 +555,28 @@
                         <p>Доставка</p>
                         <span>в течение 3 дней</span>
                     </div>
-                    <div class="basket-all_price d-lg-none d-flex justify-content-between">
-                        <span>Экономия</span>
-                        <p><i class="total_savings"></i> сум</p>
-                    </div>
                     <div class="basket-all_price d-lg-flex d-none justify-content-between mb-4">
-                        <h5>Итого:</h5>
+                        <h5>Всего:</h5>
                         <div>
                             <h6 class="text-end"><i class="total_price"></i> сум</h6>
-                            <p><span>Экономия</span><i class="total_savings"></i> сум</p>
                         </div>
                     </div>
                     <div class="basket-order_fixed">
-                        <div class="basket-order_fixed--price d-lg-none d-md-block d-none">
+                        <div class="basket-order_fixed--price d-block">
                             <div class="d-flex gap-2">
                                 <p class="total_quantity"></p>
                                 <p>товара</p>
                             </div>
                             <h6 class=""><i class="total_price"></i> сум</h6>
                         </div>
-                        <div class="basket-order_select--legalFace d-flex align-items-center gap-2">
-                            <input type="checkbox" id="legalFace" class="basket-order_legalFace--checkbox">
-                            <label for="legalFace" >Оформить заказ как юридическое лицо</label>
-                        </div>
-                        <button type="submit" class="basket-order_button">Перейти к оформлению</button>
+                        <button type="submit" class="order_button">Оформить заказ</button>
                     </div>
                 </div>
                 <div class="basket-register">
-                    <p><a href="sign-in.html">Авторизуйтесь</a>,
-                        если совершали покупки на Stab.uz</p>
-                    <p><a href="sign-up.html">Зарегистрируйтесь</a>,
-                        если совершаете покупку на Stab.uz в первый раз</p>
-                    <p>Вы также можете продолжить оформление заказа без регистрации</p>
-                    <p>Перед покупкой уточните у оператора о наличии товара +998 71 207 88 85 </p>
+                    <p>Оформляя заказ, вы соглашаетесь на обработку персональных данных в соответствии с <a href="/">Соглашением о конфиденциальности и Пользовательским соглашением</a> Stab.uz</p>
                 </div>
             </div>
         </form>
-        <a href="/" class="d-flex gap-2 mt-lg-5 mt-3 basket-back_btn">
-            <img src="image/icons/greenArrLeft.png" alt="">
-            Продолжить покупки
-        </a>
-    </section>
-    <!-- empty basket -->
-    <section class="empty-basket_cont container">
-        <div class="title-box d-flex  gap-1 align-items-end">
-            <h6 class="title">Корзина</h6>
-        </div>
-        <div class="empty-basket">
-            <div class="col-sm-6 col-11 d-sm-block d-flex flex-column align-items-center">
-                <h6>в корзине ПУСТО? Не расстраивайтесь! </h6>
-                <p>Начните подбор товаров на главной странице или используйте поиск</p>
-                <a href="/">На главную</a>
-            </div>
-            <div class="col-sm-6 col-11">
-                <img src="/image/shopping cart 2 1.png" alt="">
-            </div>
-        </div>
-    </section>
-    <!-- more goods -->
-    <section class="actual-goods container">
-        <h6 class="title mb-sm-5 bm-3">С ЭТИМи ТОВАРами покупают</h6>
-        <div class="actual-goods_slider owl-carousel" name="moreGoodsSlider">
-            <div class="goods_item">
-                <div class="goods_header">
-                    <div class="goods_header--menu d-flex align-items-center">
-                        <span class="goods-itemNew" name="goodsItemNew">New</span>
-                        <button type="button">
-                                <svg width="24" height="24" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 6.42857C5 5.61167 5.64333 5 6.375 5C7.10667 5 7.75 5.61167 7.75 6.42857C7.75 7.24548 7.10667 7.85714 6.375 7.85714C5.64333 7.85714 5 7.24548 5 6.42857ZM6.375 1C3.37588 1 1 3.46129 1 6.42857C1 9.39585 3.37588 11.8571 6.375 11.8571C8.66277 11.8571 10.5884 10.4236 11.3725 8.42857L21 8.42857C22.1046 8.42857 23 7.53314 23 6.42857C23 5.324 22.1046 4.42857 21 4.42857L11.3725 4.42857C10.5884 2.43359 8.66277 1 6.375 1ZM16.25 17.5714C16.25 16.7545 16.8933 16.1429 17.625 16.1429C18.3567 16.1429 19 16.7545 19 17.5714C19 18.3883 18.3567 19 17.625 19C16.8933 19 16.25 18.3883 16.25 17.5714ZM17.625 12.1429C15.3372 12.1429 13.4116 13.5764 12.6275 15.5714L3 15.5714C1.89543 15.5714 1 16.4669 1 17.5714C1 18.676 1.89543 19.5714 3 19.5714L12.6275 19.5714C13.4116 21.5664 15.3372 23 17.625 23C20.6241 23 23 20.5387 23 17.5714C23 14.6042 20.6241 12.1429 17.625 12.1429Z"  stroke="white" stroke-width="2"/>
-                                </svg>
-                        </button>
-                        <button type="button" class="icon-heart">
-                        </button>
-                    </div>
-                    <img src="image/cards/Group 511.svg" alt="">
-                    <img src="image/cards/Rectangle 604 (1).png" alt="">
-                    <div class="goods_header--installment d-flex align-items-center">
-                        <span class="goods_proccent" name="actualGoodsProccent">-25%</span>
-                        <p>Рассрочка</p>
-                    </div>
-                </div>
-                <div style="padding: 15px;">
-                    <p class="goods_currentPrice" name="actualGoodsCurrentPrice">12 477 500 сум</p>
-                    <p class="goods_oldPrice" name="actualGoodsOldPrice">17 020 000 сум</p>
-                    <div class="mt-1 mb-1 d-flex align-items-center gap-3">
-                        <div class="goods_rewies d-flex align-items-center gap-1">
-                            <span class="icon-star active"></span>
-                            <span class="icon-star active"></span>
-                            <span class="icon-star active"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <p class="goods_reviewCount" name="actualGoodsReviewCount">5</p>
-                        </div>
-                        <div class="goods_views d-flex gap-1">
-                            <span class="icon-eye"></span>
-                            <p class="goods_viewsCount" name="actualGoodsViewsCount">123</p>
-                        </div>
-                    </div>
-                    <a href="/" class="goods_name" name="actualGoodsName">Швейная машина Comfortstitch 11 машина Швейная Швейная</a>
-                    <a href="/" class="goods_companyName" name="actualGoodsCompanyName">CHAYKA</a>
-                    <div class="goods-addProduct ">
-                        <div class="goods-addProduct_btns">
-                            <button class="goods-addProduct-minus disabled" type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.2175 17.2175C15.8889 18.5461 14.1962 19.4509 12.3534 19.8175C10.5105 20.184 8.60041 19.9959 6.86451 19.2769C5.12861 18.5578 3.64491 17.3402 2.60104 15.7779C1.55717 14.2157 1 12.3789 1 10.5C1 8.62108 1.55716 6.78435 2.60104 5.22208C3.64491 3.65982 5.12861 2.44218 6.86451 1.72314C8.6004 1.00411 10.5105 0.81598 12.3534 1.18254C14.1962 1.5491 15.8889 2.45389 17.2175 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M6 11V10H15V11H6Z" fill="#999999"/>
-                            </svg>
-                            </button>
-                            <p class="goods-itemCount">1</p>
-                            <button class="goods-addProduct-plus"  type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.78249 17.2175C4.11108 18.5461 5.80382 19.4509 7.64664 19.8175C9.48946 20.184 11.3996 19.9959 13.1355 19.2769C14.8714 18.5578 16.3551 17.3402 17.399 15.7779C18.4428 14.2157 19 12.3789 19 10.5C19 8.62108 18.4428 6.78435 17.399 5.22208C16.3551 3.65982 14.8714 2.44218 13.1355 1.72314C11.3996 1.00411 9.48946 0.81598 7.64664 1.18254C5.80382 1.5491 4.11109 2.45389 2.78249 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M5 11V10H14V11H5Z" fill="#999999"/>
-                                <path d="M10 15H9L9 6L10 6L10 15Z" fill="#999999"/>
-                            </svg>                                
-                            </button>
-                        </div>
-                        <button type="button" class="goods-item_addToBasket">
-                            <svg width="30" height="27" viewBox="0 0 30 27" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M28.0386 3.84668H5.8078C5.50821 3.84668 5.2244 3.981 5.03446 4.21269C4.84452 4.44438 4.76846 4.74902 4.82722 5.0428L6.7503 14.6582C6.84378 15.1256 7.25419 15.4621 7.73088 15.4621H26.4561C26.918 15.4664 27.3663 15.306 27.7207 15.0095C28.0713 14.7161 28.307 14.3087 28.3867 13.859L29.9605 6.18212L29.9645 6.1613C30.0162 5.87909 30.0053 5.58899 29.9326 5.31145C29.86 5.03391 29.7273 4.77569 29.544 4.55498C29.3607 4.33428 29.1313 4.15647 28.8718 4.03409C28.6123 3.91171 28.3291 3.84774 28.0422 3.84669L28.0386 3.84668ZM27.9877 5.84668L26.4265 13.4621H8.55068L7.0276 5.84668H27.9877Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.02692 2H0.999924C0.447639 2 -7.58171e-05 1.55228 -7.58171e-05 1C-7.58171e-05 0.447715 0.447639 9.85383e-09 0.999924 9.85383e-09L4.05741 6.94585e-08C4.05748 6.94585e-08 4.05755 9.85383e-09 4.05762 9.85383e-09C4.50974 -4.52897e-05 4.948 0.156097 5.29824 0.442011C5.64013 0.7211 5.87765 1.10711 5.97294 1.53739L6.77485 4.59226C6.91507 5.12644 6.5957 5.67316 6.06151 5.81338C5.52733 5.95361 4.98061 5.63424 4.84039 5.10005L4.03269 2.02313C4.03068 2.01544 4.02875 2.00773 4.02692 2Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.53473 13.4815C6.99317 13.5898 6.64195 14.1167 6.75026 14.6582L7.55796 18.6967L7.55874 18.7006C7.64918 19.1436 7.88992 19.5418 8.24022 19.8278C8.59047 20.1137 9.02872 20.2698 9.48084 20.2698H24.1924C24.7447 20.2698 25.1924 19.8221 25.1924 19.2698C25.1924 18.7175 24.7447 18.2698 24.1924 18.2698H9.51219L8.71143 14.266C8.60311 13.7244 8.07629 13.3732 7.53473 13.4815Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.2308 25.0771C22.2096 25.0771 22.1924 25.0599 22.1924 25.0387C22.1924 25.0174 22.2096 25.0002 22.2308 25.0002C22.2521 25.0002 22.2693 25.0174 22.2693 25.0387C22.2693 25.0599 22.2521 25.0771 22.2308 25.0771ZM24.1924 25.0387C24.1924 23.9554 23.3142 23.0771 22.2308 23.0771C21.1475 23.0771 20.2693 23.9554 20.2693 25.0387C20.2693 26.122 21.1475 27.0002 22.2308 27.0002C23.3142 27.0002 24.1924 26.122 24.1924 25.0387Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6154 25.0771C10.5941 25.0771 10.5769 25.0599 10.5769 25.0387C10.5769 25.0174 10.5941 25.0002 10.6154 25.0002C10.6366 25.0002 10.6538 25.0174 10.6538 25.0387C10.6538 25.0599 10.6366 25.0771 10.6154 25.0771ZM12.5769 25.0387C12.5769 23.9554 11.6987 23.0771 10.6154 23.0771C9.53204 23.0771 8.65383 23.9554 8.65383 25.0387C8.65383 26.122 9.53204 27.0002 10.6154 27.0002C11.6987 27.0002 12.5769 26.122 12.5769 25.0387Z" fill="#F08718"/>
-                            </svg>
-                        </button>                            
-                    </div>
-                </div>
-            </div>
-            <div class="goods_item">
-                <div class="goods_header">
-                    <div class="goods_header--menu d-flex align-items-center">
-                        <button type="button" class="active">
-                                <svg width="24" height="24" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 6.42857C5 5.61167 5.64333 5 6.375 5C7.10667 5 7.75 5.61167 7.75 6.42857C7.75 7.24548 7.10667 7.85714 6.375 7.85714C5.64333 7.85714 5 7.24548 5 6.42857ZM6.375 1C3.37588 1 1 3.46129 1 6.42857C1 9.39585 3.37588 11.8571 6.375 11.8571C8.66277 11.8571 10.5884 10.4236 11.3725 8.42857L21 8.42857C22.1046 8.42857 23 7.53314 23 6.42857C23 5.324 22.1046 4.42857 21 4.42857L11.3725 4.42857C10.5884 2.43359 8.66277 1 6.375 1ZM16.25 17.5714C16.25 16.7545 16.8933 16.1429 17.625 16.1429C18.3567 16.1429 19 16.7545 19 17.5714C19 18.3883 18.3567 19 17.625 19C16.8933 19 16.25 18.3883 16.25 17.5714ZM17.625 12.1429C15.3372 12.1429 13.4116 13.5764 12.6275 15.5714L3 15.5714C1.89543 15.5714 1 16.4669 1 17.5714C1 18.676 1.89543 19.5714 3 19.5714L12.6275 19.5714C13.4116 21.5664 15.3372 23 17.625 23C20.6241 23 23 20.5387 23 17.5714C23 14.6042 20.6241 12.1429 17.625 12.1429Z"  stroke="white" stroke-width="2"/>
-                                </svg>
-                        </button>
-                        <button type="button" class="icon-heart active">
-                        </button>
-                    </div>
-                    <img src="image/cards/Group 511.svg" alt="">
-                    <img src="image/cards/Rectangle 604 (1).png" alt="">
-                    <div class="goods_header--installment d-flex align-items-center">
-                        <p>Рассрочка</p>
-                    </div>
-                </div>
-                <div style="padding: 15px;">
-                    <p class="goods_currentPrice" name="actualGoodsCurrentPrice">1 477 500 сум</p>
-                    <p class="goods_oldPrice" name="actualGoodsOldPrice">1 020 000 сум</p>
-                    <div class="mt-1 mb-1 d-flex align-items-center gap-3">
-                        <div class="goods_rewies d-flex align-items-center gap-1">
-                            <span class="icon-star active"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <p class="goods_reviewCount" name="actualGoodsReviewCount">12</p>
-                        </div>
-                        <div class="goods_views d-flex gap-1">
-                            <span class="icon-eye"></span>
-                            <p class="goods_viewsCount" name="actualGoodsViewsCount">13</p>
-                        </div>
-                    </div>
-                    <a href="/" class="goods_name" name="actualGoodsName">Швейная машина Comfortstitch 11 машина Швейная Швейная</a>
-                    <a href="/" class="goods_companyName" name="actualGoodsCompanyName">GARDENA</a>
-                    <div class="goods-addProduct ">
-                        <div class="goods-addProduct_btns">
-                            <button class="goods-addProduct-minus disabled" type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.2175 17.2175C15.8889 18.5461 14.1962 19.4509 12.3534 19.8175C10.5105 20.184 8.60041 19.9959 6.86451 19.2769C5.12861 18.5578 3.64491 17.3402 2.60104 15.7779C1.55717 14.2157 1 12.3789 1 10.5C1 8.62108 1.55716 6.78435 2.60104 5.22208C3.64491 3.65982 5.12861 2.44218 6.86451 1.72314C8.6004 1.00411 10.5105 0.81598 12.3534 1.18254C14.1962 1.5491 15.8889 2.45389 17.2175 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M6 11V10H15V11H6Z" fill="#999999"/>
-                            </svg>
-                            </button>
-                            <p class="goods-itemCount">1</p>
-                            <button class="goods-addProduct-plus"  type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.78249 17.2175C4.11108 18.5461 5.80382 19.4509 7.64664 19.8175C9.48946 20.184 11.3996 19.9959 13.1355 19.2769C14.8714 18.5578 16.3551 17.3402 17.399 15.7779C18.4428 14.2157 19 12.3789 19 10.5C19 8.62108 18.4428 6.78435 17.399 5.22208C16.3551 3.65982 14.8714 2.44218 13.1355 1.72314C11.3996 1.00411 9.48946 0.81598 7.64664 1.18254C5.80382 1.5491 4.11109 2.45389 2.78249 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M5 11V10H14V11H5Z" fill="#999999"/>
-                                <path d="M10 15H9L9 6L10 6L10 15Z" fill="#999999"/>
-                            </svg>                                
-                            </button>
-                        </div>
-                        <button type="button" class="goods-item_addToBasket">
-                            <svg width="30" height="27" viewBox="0 0 30 27" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M28.0386 3.84668H5.8078C5.50821 3.84668 5.2244 3.981 5.03446 4.21269C4.84452 4.44438 4.76846 4.74902 4.82722 5.0428L6.7503 14.6582C6.84378 15.1256 7.25419 15.4621 7.73088 15.4621H26.4561C26.918 15.4664 27.3663 15.306 27.7207 15.0095C28.0713 14.7161 28.307 14.3087 28.3867 13.859L29.9605 6.18212L29.9645 6.1613C30.0162 5.87909 30.0053 5.58899 29.9326 5.31145C29.86 5.03391 29.7273 4.77569 29.544 4.55498C29.3607 4.33428 29.1313 4.15647 28.8718 4.03409C28.6123 3.91171 28.3291 3.84774 28.0422 3.84669L28.0386 3.84668ZM27.9877 5.84668L26.4265 13.4621H8.55068L7.0276 5.84668H27.9877Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.02692 2H0.999924C0.447639 2 -7.58171e-05 1.55228 -7.58171e-05 1C-7.58171e-05 0.447715 0.447639 9.85383e-09 0.999924 9.85383e-09L4.05741 6.94585e-08C4.05748 6.94585e-08 4.05755 9.85383e-09 4.05762 9.85383e-09C4.50974 -4.52897e-05 4.948 0.156097 5.29824 0.442011C5.64013 0.7211 5.87765 1.10711 5.97294 1.53739L6.77485 4.59226C6.91507 5.12644 6.5957 5.67316 6.06151 5.81338C5.52733 5.95361 4.98061 5.63424 4.84039 5.10005L4.03269 2.02313C4.03068 2.01544 4.02875 2.00773 4.02692 2Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.53473 13.4815C6.99317 13.5898 6.64195 14.1167 6.75026 14.6582L7.55796 18.6967L7.55874 18.7006C7.64918 19.1436 7.88992 19.5418 8.24022 19.8278C8.59047 20.1137 9.02872 20.2698 9.48084 20.2698H24.1924C24.7447 20.2698 25.1924 19.8221 25.1924 19.2698C25.1924 18.7175 24.7447 18.2698 24.1924 18.2698H9.51219L8.71143 14.266C8.60311 13.7244 8.07629 13.3732 7.53473 13.4815Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.2308 25.0771C22.2096 25.0771 22.1924 25.0599 22.1924 25.0387C22.1924 25.0174 22.2096 25.0002 22.2308 25.0002C22.2521 25.0002 22.2693 25.0174 22.2693 25.0387C22.2693 25.0599 22.2521 25.0771 22.2308 25.0771ZM24.1924 25.0387C24.1924 23.9554 23.3142 23.0771 22.2308 23.0771C21.1475 23.0771 20.2693 23.9554 20.2693 25.0387C20.2693 26.122 21.1475 27.0002 22.2308 27.0002C23.3142 27.0002 24.1924 26.122 24.1924 25.0387Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6154 25.0771C10.5941 25.0771 10.5769 25.0599 10.5769 25.0387C10.5769 25.0174 10.5941 25.0002 10.6154 25.0002C10.6366 25.0002 10.6538 25.0174 10.6538 25.0387C10.6538 25.0599 10.6366 25.0771 10.6154 25.0771ZM12.5769 25.0387C12.5769 23.9554 11.6987 23.0771 10.6154 23.0771C9.53204 23.0771 8.65383 23.9554 8.65383 25.0387C8.65383 26.122 9.53204 27.0002 10.6154 27.0002C11.6987 27.0002 12.5769 26.122 12.5769 25.0387Z" fill="#F08718"/>
-                            </svg>
-                        </button>                            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- recently viewed -->
-    <section class="actual-goods container">
-        <h6 class="title mb-sm-5 bm-3">Недавно просмотренные товары</h6>
-        <div class="actual-goods_slider owl-carousel" name="recentlyViewedSlider">
-            <div class="goods_item">
-                <div class="goods_header">
-                    <div class="goods_header--menu d-flex align-items-center">
-                        <span class="goods-itemNew" name="goodsItemNew">New</span>
-                        <button type="button">
-                                <svg width="24" height="24" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 6.42857C5 5.61167 5.64333 5 6.375 5C7.10667 5 7.75 5.61167 7.75 6.42857C7.75 7.24548 7.10667 7.85714 6.375 7.85714C5.64333 7.85714 5 7.24548 5 6.42857ZM6.375 1C3.37588 1 1 3.46129 1 6.42857C1 9.39585 3.37588 11.8571 6.375 11.8571C8.66277 11.8571 10.5884 10.4236 11.3725 8.42857L21 8.42857C22.1046 8.42857 23 7.53314 23 6.42857C23 5.324 22.1046 4.42857 21 4.42857L11.3725 4.42857C10.5884 2.43359 8.66277 1 6.375 1ZM16.25 17.5714C16.25 16.7545 16.8933 16.1429 17.625 16.1429C18.3567 16.1429 19 16.7545 19 17.5714C19 18.3883 18.3567 19 17.625 19C16.8933 19 16.25 18.3883 16.25 17.5714ZM17.625 12.1429C15.3372 12.1429 13.4116 13.5764 12.6275 15.5714L3 15.5714C1.89543 15.5714 1 16.4669 1 17.5714C1 18.676 1.89543 19.5714 3 19.5714L12.6275 19.5714C13.4116 21.5664 15.3372 23 17.625 23C20.6241 23 23 20.5387 23 17.5714C23 14.6042 20.6241 12.1429 17.625 12.1429Z"  stroke="white" stroke-width="2"/>
-                                </svg>
-                        </button>
-                        <button type="button" class="icon-heart">
-                        </button>
-                    </div>
-                    <img src="image/cards/Group 511.svg" alt="">
-                    <img src="image/cards/Rectangle 604 (1).png" alt="">
-                    <div class="goods_header--installment d-flex align-items-center">
-                        <span class="goods_proccent" name="actualGoodsProccent">-25%</span>
-                        <p>Рассрочка</p>
-                    </div>
-                </div>
-                <div style="padding: 15px;">
-                    <p class="goods_currentPrice" name="actualGoodsCurrentPrice">12 477 500 сум</p>
-                    <p class="goods_oldPrice" name="actualGoodsOldPrice">17 020 000 сум</p>
-                    <div class="mt-1 mb-1 d-flex align-items-center gap-3">
-                        <div class="goods_rewies d-flex align-items-center gap-1">
-                            <span class="icon-star active"></span>
-                            <span class="icon-star active"></span>
-                            <span class="icon-star active"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <p class="goods_reviewCount" name="actualGoodsReviewCount">5</p>
-                        </div>
-                        <div class="goods_views d-flex gap-1">
-                            <span class="icon-eye"></span>
-                            <p class="goods_viewsCount" name="actualGoodsViewsCount">123</p>
-                        </div>
-                    </div>
-                    <a href="/" class="goods_name" name="actualGoodsName">Швейная машина Comfortstitch 11 машина Швейная Швейная</a>
-                    <a href="/" class="goods_companyName" name="actualGoodsCompanyName">CHAYKA</a>
-                    <div class="goods-addProduct ">
-                        <div class="goods-addProduct_btns">
-                            <button class="goods-addProduct-minus disabled" type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.2175 17.2175C15.8889 18.5461 14.1962 19.4509 12.3534 19.8175C10.5105 20.184 8.60041 19.9959 6.86451 19.2769C5.12861 18.5578 3.64491 17.3402 2.60104 15.7779C1.55717 14.2157 1 12.3789 1 10.5C1 8.62108 1.55716 6.78435 2.60104 5.22208C3.64491 3.65982 5.12861 2.44218 6.86451 1.72314C8.6004 1.00411 10.5105 0.81598 12.3534 1.18254C14.1962 1.5491 15.8889 2.45389 17.2175 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M6 11V10H15V11H6Z" fill="#999999"/>
-                            </svg>
-                            </button>
-                            <p class="goods-itemCount">1</p>
-                            <button class="goods-addProduct-plus"  type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.78249 17.2175C4.11108 18.5461 5.80382 19.4509 7.64664 19.8175C9.48946 20.184 11.3996 19.9959 13.1355 19.2769C14.8714 18.5578 16.3551 17.3402 17.399 15.7779C18.4428 14.2157 19 12.3789 19 10.5C19 8.62108 18.4428 6.78435 17.399 5.22208C16.3551 3.65982 14.8714 2.44218 13.1355 1.72314C11.3996 1.00411 9.48946 0.81598 7.64664 1.18254C5.80382 1.5491 4.11109 2.45389 2.78249 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M5 11V10H14V11H5Z" fill="#999999"/>
-                                <path d="M10 15H9L9 6L10 6L10 15Z" fill="#999999"/>
-                            </svg>                                
-                            </button>
-                        </div>
-                        <button type="button" class="goods-item_addToBasket">
-                            <svg width="30" height="27" viewBox="0 0 30 27" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M28.0386 3.84668H5.8078C5.50821 3.84668 5.2244 3.981 5.03446 4.21269C4.84452 4.44438 4.76846 4.74902 4.82722 5.0428L6.7503 14.6582C6.84378 15.1256 7.25419 15.4621 7.73088 15.4621H26.4561C26.918 15.4664 27.3663 15.306 27.7207 15.0095C28.0713 14.7161 28.307 14.3087 28.3867 13.859L29.9605 6.18212L29.9645 6.1613C30.0162 5.87909 30.0053 5.58899 29.9326 5.31145C29.86 5.03391 29.7273 4.77569 29.544 4.55498C29.3607 4.33428 29.1313 4.15647 28.8718 4.03409C28.6123 3.91171 28.3291 3.84774 28.0422 3.84669L28.0386 3.84668ZM27.9877 5.84668L26.4265 13.4621H8.55068L7.0276 5.84668H27.9877Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.02692 2H0.999924C0.447639 2 -7.58171e-05 1.55228 -7.58171e-05 1C-7.58171e-05 0.447715 0.447639 9.85383e-09 0.999924 9.85383e-09L4.05741 6.94585e-08C4.05748 6.94585e-08 4.05755 9.85383e-09 4.05762 9.85383e-09C4.50974 -4.52897e-05 4.948 0.156097 5.29824 0.442011C5.64013 0.7211 5.87765 1.10711 5.97294 1.53739L6.77485 4.59226C6.91507 5.12644 6.5957 5.67316 6.06151 5.81338C5.52733 5.95361 4.98061 5.63424 4.84039 5.10005L4.03269 2.02313C4.03068 2.01544 4.02875 2.00773 4.02692 2Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.53473 13.4815C6.99317 13.5898 6.64195 14.1167 6.75026 14.6582L7.55796 18.6967L7.55874 18.7006C7.64918 19.1436 7.88992 19.5418 8.24022 19.8278C8.59047 20.1137 9.02872 20.2698 9.48084 20.2698H24.1924C24.7447 20.2698 25.1924 19.8221 25.1924 19.2698C25.1924 18.7175 24.7447 18.2698 24.1924 18.2698H9.51219L8.71143 14.266C8.60311 13.7244 8.07629 13.3732 7.53473 13.4815Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.2308 25.0771C22.2096 25.0771 22.1924 25.0599 22.1924 25.0387C22.1924 25.0174 22.2096 25.0002 22.2308 25.0002C22.2521 25.0002 22.2693 25.0174 22.2693 25.0387C22.2693 25.0599 22.2521 25.0771 22.2308 25.0771ZM24.1924 25.0387C24.1924 23.9554 23.3142 23.0771 22.2308 23.0771C21.1475 23.0771 20.2693 23.9554 20.2693 25.0387C20.2693 26.122 21.1475 27.0002 22.2308 27.0002C23.3142 27.0002 24.1924 26.122 24.1924 25.0387Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6154 25.0771C10.5941 25.0771 10.5769 25.0599 10.5769 25.0387C10.5769 25.0174 10.5941 25.0002 10.6154 25.0002C10.6366 25.0002 10.6538 25.0174 10.6538 25.0387C10.6538 25.0599 10.6366 25.0771 10.6154 25.0771ZM12.5769 25.0387C12.5769 23.9554 11.6987 23.0771 10.6154 23.0771C9.53204 23.0771 8.65383 23.9554 8.65383 25.0387C8.65383 26.122 9.53204 27.0002 10.6154 27.0002C11.6987 27.0002 12.5769 26.122 12.5769 25.0387Z" fill="#F08718"/>
-                            </svg>
-                        </button>                            
-                    </div>
-                </div>
-            </div>
-            <div class="goods_item">
-                <div class="goods_header">
-                    <div class="goods_header--menu d-flex align-items-center">
-                        <button type="button" class="active">
-                                <svg width="24" height="24" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 6.42857C5 5.61167 5.64333 5 6.375 5C7.10667 5 7.75 5.61167 7.75 6.42857C7.75 7.24548 7.10667 7.85714 6.375 7.85714C5.64333 7.85714 5 7.24548 5 6.42857ZM6.375 1C3.37588 1 1 3.46129 1 6.42857C1 9.39585 3.37588 11.8571 6.375 11.8571C8.66277 11.8571 10.5884 10.4236 11.3725 8.42857L21 8.42857C22.1046 8.42857 23 7.53314 23 6.42857C23 5.324 22.1046 4.42857 21 4.42857L11.3725 4.42857C10.5884 2.43359 8.66277 1 6.375 1ZM16.25 17.5714C16.25 16.7545 16.8933 16.1429 17.625 16.1429C18.3567 16.1429 19 16.7545 19 17.5714C19 18.3883 18.3567 19 17.625 19C16.8933 19 16.25 18.3883 16.25 17.5714ZM17.625 12.1429C15.3372 12.1429 13.4116 13.5764 12.6275 15.5714L3 15.5714C1.89543 15.5714 1 16.4669 1 17.5714C1 18.676 1.89543 19.5714 3 19.5714L12.6275 19.5714C13.4116 21.5664 15.3372 23 17.625 23C20.6241 23 23 20.5387 23 17.5714C23 14.6042 20.6241 12.1429 17.625 12.1429Z"  stroke="white" stroke-width="2"/>
-                                </svg>
-                        </button>
-                        <button type="button" class="icon-heart active">
-                        </button>
-                    </div>
-                    <img src="image/cards/Group 511.svg" alt="">
-                    <img src="image/cards/Rectangle 604 (1).png" alt="">
-                    <div class="goods_header--installment d-flex align-items-center">
-                        <p>Рассрочка</p>
-                    </div>
-                </div>
-                <div style="padding: 15px;">
-                    <p class="goods_currentPrice" name="actualGoodsCurrentPrice">1 477 500 сум</p>
-                    <p class="goods_oldPrice" name="actualGoodsOldPrice">1 020 000 сум</p>
-                    <div class="mt-1 mb-1 d-flex align-items-center gap-3">
-                        <div class="goods_rewies d-flex align-items-center gap-1">
-                            <span class="icon-star active"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <p class="goods_reviewCount" name="actualGoodsReviewCount">12</p>
-                        </div>
-                        <div class="goods_views d-flex gap-1">
-                            <span class="icon-eye"></span>
-                            <p class="goods_viewsCount" name="actualGoodsViewsCount">13</p>
-                        </div>
-                    </div>
-                    <a href="/" class="goods_name" name="actualGoodsName">Швейная машина Comfortstitch 11 машина Швейная Швейная</a>
-                    <a href="/" class="goods_companyName" name="actualGoodsCompanyName">GARDENA</a>
-                    <div class="goods-addProduct ">
-                        <div class="goods-addProduct_btns">
-                            <button class="goods-addProduct-minus disabled" type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.2175 17.2175C15.8889 18.5461 14.1962 19.4509 12.3534 19.8175C10.5105 20.184 8.60041 19.9959 6.86451 19.2769C5.12861 18.5578 3.64491 17.3402 2.60104 15.7779C1.55717 14.2157 1 12.3789 1 10.5C1 8.62108 1.55716 6.78435 2.60104 5.22208C3.64491 3.65982 5.12861 2.44218 6.86451 1.72314C8.6004 1.00411 10.5105 0.81598 12.3534 1.18254C14.1962 1.5491 15.8889 2.45389 17.2175 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M6 11V10H15V11H6Z" fill="#999999"/>
-                            </svg>
-                            </button>
-                            <p class="goods-itemCount">1</p>
-                            <button class="goods-addProduct-plus"  type="button"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.78249 17.2175C4.11108 18.5461 5.80382 19.4509 7.64664 19.8175C9.48946 20.184 11.3996 19.9959 13.1355 19.2769C14.8714 18.5578 16.3551 17.3402 17.399 15.7779C18.4428 14.2157 19 12.3789 19 10.5C19 8.62108 18.4428 6.78435 17.399 5.22208C16.3551 3.65982 14.8714 2.44218 13.1355 1.72314C11.3996 1.00411 9.48946 0.81598 7.64664 1.18254C5.80382 1.5491 4.11109 2.45389 2.78249 3.78248" stroke="#999999" stroke-linecap="round"/>
-                                <path d="M5 11V10H14V11H5Z" fill="#999999"/>
-                                <path d="M10 15H9L9 6L10 6L10 15Z" fill="#999999"/>
-                            </svg>                                
-                            </button>
-                        </div>
-                        <button type="button" class="goods-item_addToBasket">
-                            <svg width="30" height="27" viewBox="0 0 30 27" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M28.0386 3.84668H5.8078C5.50821 3.84668 5.2244 3.981 5.03446 4.21269C4.84452 4.44438 4.76846 4.74902 4.82722 5.0428L6.7503 14.6582C6.84378 15.1256 7.25419 15.4621 7.73088 15.4621H26.4561C26.918 15.4664 27.3663 15.306 27.7207 15.0095C28.0713 14.7161 28.307 14.3087 28.3867 13.859L29.9605 6.18212L29.9645 6.1613C30.0162 5.87909 30.0053 5.58899 29.9326 5.31145C29.86 5.03391 29.7273 4.77569 29.544 4.55498C29.3607 4.33428 29.1313 4.15647 28.8718 4.03409C28.6123 3.91171 28.3291 3.84774 28.0422 3.84669L28.0386 3.84668ZM27.9877 5.84668L26.4265 13.4621H8.55068L7.0276 5.84668H27.9877Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.02692 2H0.999924C0.447639 2 -7.58171e-05 1.55228 -7.58171e-05 1C-7.58171e-05 0.447715 0.447639 9.85383e-09 0.999924 9.85383e-09L4.05741 6.94585e-08C4.05748 6.94585e-08 4.05755 9.85383e-09 4.05762 9.85383e-09C4.50974 -4.52897e-05 4.948 0.156097 5.29824 0.442011C5.64013 0.7211 5.87765 1.10711 5.97294 1.53739L6.77485 4.59226C6.91507 5.12644 6.5957 5.67316 6.06151 5.81338C5.52733 5.95361 4.98061 5.63424 4.84039 5.10005L4.03269 2.02313C4.03068 2.01544 4.02875 2.00773 4.02692 2Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.53473 13.4815C6.99317 13.5898 6.64195 14.1167 6.75026 14.6582L7.55796 18.6967L7.55874 18.7006C7.64918 19.1436 7.88992 19.5418 8.24022 19.8278C8.59047 20.1137 9.02872 20.2698 9.48084 20.2698H24.1924C24.7447 20.2698 25.1924 19.8221 25.1924 19.2698C25.1924 18.7175 24.7447 18.2698 24.1924 18.2698H9.51219L8.71143 14.266C8.60311 13.7244 8.07629 13.3732 7.53473 13.4815Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.2308 25.0771C22.2096 25.0771 22.1924 25.0599 22.1924 25.0387C22.1924 25.0174 22.2096 25.0002 22.2308 25.0002C22.2521 25.0002 22.2693 25.0174 22.2693 25.0387C22.2693 25.0599 22.2521 25.0771 22.2308 25.0771ZM24.1924 25.0387C24.1924 23.9554 23.3142 23.0771 22.2308 23.0771C21.1475 23.0771 20.2693 23.9554 20.2693 25.0387C20.2693 26.122 21.1475 27.0002 22.2308 27.0002C23.3142 27.0002 24.1924 26.122 24.1924 25.0387Z" fill="#F08718"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6154 25.0771C10.5941 25.0771 10.5769 25.0599 10.5769 25.0387C10.5769 25.0174 10.5941 25.0002 10.6154 25.0002C10.6366 25.0002 10.6538 25.0174 10.6538 25.0387C10.6538 25.0599 10.6366 25.0771 10.6154 25.0771ZM12.5769 25.0387C12.5769 23.9554 11.6987 23.0771 10.6154 23.0771C9.53204 23.0771 8.65383 23.9554 8.65383 25.0387C8.65383 26.122 9.53204 27.0002 10.6154 27.0002C11.6987 27.0002 12.5769 26.122 12.5769 25.0387Z" fill="#F08718"/>
-                            </svg>
-                        </button>                            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- mailing  -->
-    <section class="container ">
-        <div class="mailing d-flex justify-content-between align-items-center flex-lg-row flex-column gap-3">
-            <div class="mailing-lext d-flex flex-column align-items-lg-start align-items-center">
-                <img src="image/whiteLogo.png" alt="">
-                <p>Будьте всегда в курсе!</p>
-            </div>
-            <form action="URL" class="mailing-form">
-                <div class="mailing-form_check d-flex gap-3">
-                    <input type="checkbox" required>
-                    <p>Ознакомлен(а) с <a href="/">правилами</a> предоставления услуг и согласен(на) на обработку своих персональных данных</p>
-                </div>
-                <div class="d-flex gap-4 flex-nowrap flex-md-row flex-column">
-                    <input type="email" class="mailing-email" placeholder="Ваш e-mail" required>
-                    <button disabled type="submit">Подписаться <svg width="67" height="67" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.519 56.481C15.0642 61.0262 20.8552 64.1215 27.1596 65.3755C33.4639 66.6295 39.9986 65.9859 45.9372 63.5261C51.8758 61.0662 56.9516 56.9006 60.5228 51.556C64.0939 46.2114 66 39.9279 66 33.5C66 27.0721 64.0939 20.7886 60.5228 15.444C56.9516 10.0994 51.8758 5.93377 45.9372 3.47392C39.9986 1.01407 33.464 0.370459 27.1596 1.62448C20.8552 2.8785 15.0642 5.97382 10.519 10.519"  stroke-width="2" stroke-linecap="round"/>
-                        <path d="M28.3333 17L42 33.5M42 33.5L28.3333 50M42 33.5H0.999999"  stroke-width="2" stroke-linecap="round"/>
-                    </svg></button>
-                </div>
-            </form>
-        </div>
     </section>
     <!-- footer -->
     <footer class="footer d-md-block d-none">
@@ -835,7 +641,7 @@
             </svg>
             <p>Сравнить</p>
         </a>
-        <a href="basket.html" class="footer-menu_item active">
+        <a href="basket.html" class="footer-menu_item basket-btn_nav">
             <svg width="30" height="27" viewBox="0 0 30 27" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.104 23.0003C10.5464 23.0003 10.0945 23.448 10.0945 24.0002C10.0945 24.5523 10.5464 25 11.104 25C11.6617 25 12.1136 24.5523 12.1136 24.0002C12.1136 23.448 11.6617 23.0003 11.104 23.0003ZM8.07539 24.0002C8.07539 22.3433 9.43143 21.0003 11.104 21.0003C12.7766 21.0003 14.1327 22.3433 14.1327 24.0002C14.1327 25.657 12.7766 27 11.104 27C9.43143 27 8.07539 25.657 8.07539 24.0002Z"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M23.2206 23.0003C22.6629 23.0003 22.211 23.448 22.211 24.0002C22.211 24.5523 22.6629 25 23.2206 25C23.7782 25 24.2301 24.5523 24.2301 24.0002C24.2301 23.448 23.7782 23.0003 23.2206 23.0003ZM20.1919 24.0002C20.1919 22.3433 21.548 21.0003 23.2206 21.0003C24.8932 21.0003 26.2492 22.3433 26.2492 24.0002C26.2492 25.657 24.8932 27 23.2206 27C21.548 27 20.1919 25.657 20.1919 24.0002Z"/>
@@ -1001,9 +807,11 @@
           </div>
       </div>
     </div>
+
     <script src="js/jquery.min.js"></script>
     <script src="owl-carousel/owl.carousel.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="slick/slick.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

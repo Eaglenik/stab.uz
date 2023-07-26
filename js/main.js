@@ -449,7 +449,6 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('.faq-accordion-header').click(function () {
     var $item = $(this).parent();
-
     if ($item.hasClass('active')) {
       $item.removeClass('active');
       $item.find('.faq-accordion-content').slideUp();
@@ -882,7 +881,7 @@ $(document).ready(function() {
         $button.addClass('disabled');
       }
     });
-});
+  });
 });
 $('.review-grade_stars input[type="checkbox"]').on('change', function() {
   var checkbox = $(this);
@@ -967,18 +966,30 @@ $(document).ready(function() {
     }
     $('.total_quantity').text(totalQuantity);
   }
-  $(".goods-addProduct-minus, .goods-addProduct-plus").on("click",function(){
-    let t=$(this).siblings(".goods-itemCount"),
-        e=parseInt(t.val());
-    if ($(this).hasClass("goods-addProduct-minus") && e>1) {
-      t.val(e-1);
-      let index = $(this).closest(".basket-product").index();
-      updateQuantity(index, e-1);
-    } else if ($(this).hasClass("goods-addProduct-plus")) {
-      t.val(e+1);
-      let index = $(this).closest(".basket-product").index();
-      updateQuantity(index, e+1);
+  function updateButtonStatus() {
+  $(".goods-itemCount").each(function() {
+    let count = parseInt($(this).val());
+    let minusButton = $(this).siblings(".goods-addProduct-minus");
+    if (count === 1) {
+      minusButton.addClass("disabled");
+    } else {
+      minusButton.removeClass("disabled");
     }
+  });
+  }
+  $(".goods-addProduct-minus, .goods-addProduct-plus").on("click", function() {
+    let t = $(this).siblings(".goods-itemCount"),
+      e = parseInt(t.val());
+    if ($(this).hasClass("goods-addProduct-minus") && e > 1) {
+      t.val(e - 1);
+      let index = $(this).closest(".basket-product").index();
+      updateQuantity(index, e - 1);
+    } else if ($(this).hasClass("goods-addProduct-plus")) {
+      t.val(e + 1);
+      let index = $(this).closest(".basket-product").index();
+      updateQuantity(index, e + 1);
+    }
+    updateButtonStatus();
   });
   $(".goods-item_addToBasket").on("click", function() {
     let t = $(this).closest(".goods_item"),
@@ -1007,7 +1018,6 @@ $(document).ready(function() {
     calculateSavings();
     checkBasketProducts();
   updateQuantity()
-
   });
   function displayBasketItems() {
     let basketItems = JSON.parse(localStorage.getItem('basketItems')) || [];
@@ -1102,33 +1112,57 @@ $(document).ready(function() {
     calculateSavings();
     checkBasketProducts();
   });
+  $('.item_count').each(function() {
+    var value = parseInt($(this).val());
+    if (value === 1) {
+      $(this).siblings('.basket-product_minus').addClass('disabled');
+    } else {
+      $(this).siblings('.basket-product_minus').removeClass('disabled');
+    }
+  });
   $(document).on('click', '.basket-product_plus', function() {
-    let input = $(this).siblings('.item_count');
-    let value = parseInt(input.val());
+    var input = $(this).siblings('.item_count');
+    var value = parseInt(input.val());
     input.val(value + 1);
     updateTotals();
     calculateSavings();
+    toggleMinusButtonState(input);
   });
   $(document).on('click', '.basket-product_minus', function() {
-    let input = $(this).siblings('.item_count');
-    let value = parseInt(input.val());
+    var input = $(this).siblings('.item_count');
+    var value = parseInt(input.val());
+
     if (value > 1) {
       input.val(value - 1);
     }
-
-    // if(value <= 1){
-    //   input.addClass('act');
-    // } else{
-    //   input.removeClass('act');
-    // }
-
     updateTotals();
     calculateSavings();
+    toggleMinusButtonState(input);
+  });
+  function toggleMinusButtonState(input) {
+    var value = parseInt(input.val());
+    var minusButton = input.siblings('.basket-product_minus');
+    if (value === 1) {
+      minusButton.addClass('disabled');
+    } else {
+      minusButton.removeClass('disabled');
+    }
+  }
+  $('#selectAll').change(function() {
+    $('.basket-product_checkbox').prop('checked', this.checked);
+  });
+  $('#legalFace').on('change', function() {
+    if ($(this).is(':checked')) {
+      $('.basket-form').attr('action', 'orderLegal.html');
+    } else {
+      $('.basket-form').attr('action', 'orderNatural.html');
+    }
   });
   updateTotals();
   calculateSavings();
   checkBasketProducts();
-  updateQuantity()
+  updateQuantity();
+  updateButtonStatus();
 });
 function resizeOrder() {
   if($(window).width() > 576){
@@ -1143,3 +1177,86 @@ $(document).ready(function(){
 $(window).on('resize', function() {
   resizeOrder()
 })
+// ORDER BASKET
+$(document).ready(function() {
+  // inputs 1
+  $('.order-payment_method').on('change', function() {
+    if ($(this).is(':checked')) {
+      $('.installment-bank').prop('checked', false);
+      $('.installment-plan_bank').removeClass('selected');
+    } else {
+      $('.installment-bank').prop('checked', this.checked);
+    }
+  });
+  $('.installment-bank').on('change', function() {
+    if ($(this).is(':checked')) {
+      $('#onlinePayment, #uponКeceipt').prop('checked', false);
+      $('#installmentPlan').prop('checked', this.checked);
+      $('.installment-plan_bank').removeClass('selected');
+      $(this).closest('.installment-plan_bank').addClass('selected');
+    } else {
+      $(this).closest('.installment-plan_bank').removeClass('selected');
+    }
+  });
+  // inputs 2
+  $('.order-delivery_inpt').on('change', function() {
+    if ($(this).is(':checked')) {
+      $('.order-pickup_inpt').prop('checked', false);
+      $('.order-pickup').removeClass('selected');
+    } else {
+      $('.order-pickup_inpt').prop('checked', this.checked);
+    }
+  });
+  $('.order-pickup_inpt').on('change', function() {
+    if ($(this).is(':checked')) {
+      $('#courierDelivery, #expressDelivery, #oversizedDelivery').prop('checked', false);
+      $('#pickup').prop('checked', this.checked);
+      $('.order-pickup').removeClass('selected');
+      $(this).closest('.order-pickup').addClass('selected');
+    } else {
+      $(this).closest('.order-pickup').removeClass('selected');
+    }
+  });
+  // inputs text
+  $('input[type="text"]').on('input', function() {
+    var orderRecipientName = $('#orderRecipientName').val();
+    var orderRecipientSurname = $('#orderRecipientSurname').val();
+    var orderRecipientPhone = $('#orderRecipientPhone').val();
+    if (orderRecipientName && orderRecipientSurname && orderRecipientPhone) {
+      $('#orderRecipientPoint').addClass('active');
+      $('#checkout').addClass('active');
+      $('#orderRecipientLine').addClass('active');
+    } else{
+      $('#checkout').removeClass('active');
+      $('#orderRecipientLine').removeClass('active');
+    }
+  });
+  // add active to checkout
+  $('.order-left input').on('input', function() {
+    var orderRecipientName = $('#orderRecipientName').val();
+    var orderRecipientSurname = $('#orderRecipientSurname').val();
+    var orderRecipientPhone = $('#orderRecipientPhone').val();
+    if($('.order-payment_method').is(':checked') && $('.order-delivery_inpt').is(':checked') && orderRecipientName && orderRecipientSurname && orderRecipientPhone){
+      $('.order-checkout').addClass('active')
+      $('.order_button').addClass('active')
+    } else{
+      $('.order-checkout').removeClass('active')
+      $('.order_button').removeClass('active')
+    }
+  })
+  // order line
+  $('#paymentMethod input').click(function() {
+    $('#paymentMethodLine').addClass('active')
+    $('#deliveryMethodPoint').addClass('active')
+  })
+  $('#deliveryMethod input').click(function() {
+    $('#orderRecipientPoint').addClass('active')
+    $('#deliveryMethodPoint').addClass('active')
+    $('#deliveryMethodLine').addClass('active')
+  })
+});
+// textarea
+function autoExpand(textarea) {
+  textarea.style.height = '100px';
+  textarea.style.height = `${textarea.scrollHeight}px`;
+}

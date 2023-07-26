@@ -58,6 +58,28 @@
   .basket-product_folltrash{
     display: flex;
   }
+  .brands{
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .basket-register{
+    max-width: 350px;
+  }
+  .basket-order{
+    width: 350px;
+  }
+  .order-pickup,
+  .order-pickup:nth-of-type(1), .order-pickup:nth-of-type(2){
+    width: 100%;
+  }
+  .order-recipient_inpt{
+    width: 100%;
+  }
+  .order-inpts{
+    gap: 50px;
+  }
+  .installment-plan_bank{
+    padding: 10px;
+  }
 }
 @media (max-width:992px){
   .pickup-points_map iframe{
@@ -203,6 +225,18 @@
   }
   .basket-order_button{
     max-width: 280px;
+  }
+  .brands{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .order-pickup{
+    width: 31%;
+  }
+  .order-pickup:nth-of-type(1), .order-pickup:nth-of-type(2), .order-recipient_inpt{
+    width: 48%;
+  }
+  .order-right{
+    height: unset;
   }
 }
 @media (max-width:768px){
@@ -366,6 +400,23 @@
   .mailing{
     margin-bottom: 180px;
   }
+  .brands{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .order-pickup,
+  .order-pickup:nth-of-type(1), .order-pickup:nth-of-type(2){
+    width: 100%;
+  }
+  .order-recipient_inpt{
+    width: 100%;
+  }
+  .order-line{
+    display: none;
+  }
+  .order-inpts,
+  .order-recipient{
+    margin-left: 5px;
+  }
 }
 @media (max-width:576px){
   .product_modal--slider{
@@ -416,8 +467,8 @@
       min-width: 18px;
   }
   .menu-count{
-      width: 14px;
-      height: 14px;
+      min-width: 14px;
+      min-height: 14px;
       border: none;
       right: -5px;
   }
@@ -785,6 +836,42 @@
     right: 20px;
     width: 100px;
     height: 100px;
+  }
+  .brands{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .order-point p{
+    font-size: 20px;
+  }
+  .order-point{
+    gap: 10px;
+  }
+  .order-point span{
+    width: 34px;
+    height: 34px;
+    background-size: cover;
+  }
+  .order-inpts{
+    gap: 40px;
+  }
+  .installment-plan_banks{
+    flex-direction: column;
+  }
+  .installment-plan_bank{
+    width: 100%;
+  }
+  .order-radio h6,
+  .order-radio span{
+    font-size: 18px;
+  }
+  .order-radio p{
+    font-size: 15px;
+  }
+  .order-recipient_inpt p{
+    font-size: 16px;
+  }
+  .order{
+    padding: 0 20px 100px 20px;
   }
 }
 @media (max-width:480px){
