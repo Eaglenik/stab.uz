@@ -2926,6 +2926,10 @@ input[type="range"]::-moz-range-thumb {
 .basket-register a{
   color: var(--green);
 }
+.basket-order_fixed{
+  background: var(--white);
+  z-index: 10;
+}
 .basket-order_fixed--price i{
   font-weight: 600;
 }
@@ -3301,6 +3305,70 @@ input[type="range"]::-moz-range-thumb {
 .installment-plan_bank img{
   width: 100%;
 }
+/* goods in order */
+.goods-in-order .goods-in-order-accordion-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 0;
+}
+.goods-in-order .goods-in-order-accordion-header h5{
+  color: var(--black);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+.goods-in-order .goods-in-order-accordion-arrow svg{
+  width: 33px;
+  height: 25px;
+  fill: var(--grey2);
+  stroke: var(--grey2);
+  transform: rotate(90deg);
+}
+.goods-in-order .goods-in-order-accordion.active .goods-in-order-accordion-header .goods-in-order-accordion-arrow {
+  transform: rotate(180deg);
+}
+.goods-in-order .goods-in-order-accordion.active .goods-in-order-accordion-header .goods-in-order-accordion-arrow svg{
+  fill: var(--yellow);
+  stroke: var(--yellow);
+}
+.goods-in-order_products::-webkit-scrollbar{
+  display: none;
+}
+.goods-in-order_products{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow: scroll;
+}
+.goods-in-order_product{
+  width: 23%;
+  min-width: 280px;
+}
+.goods-in-order_product .item_count{
+  background: var(--white);
+  border: none;
+  outline: none;
+  max-width: 20px;
+  color: rgba(23, 23, 23, 0.80);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  margin-top: 5px;
+}
+.goods-in-order_product p{
+  color: rgba(23, 23, 23, 0.80);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+}
+.order{
+  margin-bottom: 70px;
+}
+
+
 
 
 .subcategories {

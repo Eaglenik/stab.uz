@@ -417,6 +417,9 @@
   .order-recipient{
     margin-left: 5px;
   }
+  .order{
+    padding: 0 20px 130px 20px;
+  }
 }
 @media (max-width:576px){
   .product_modal--slider{
@@ -870,8 +873,8 @@
   .order-recipient_inpt p{
     font-size: 16px;
   }
-  .order{
-    padding: 0 20px 100px 20px;
+  .goods-in-order_product .basket-product{
+    flex-direction: row;
   }
 }
 @media (max-width:480px){

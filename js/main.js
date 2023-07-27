@@ -1254,6 +1254,19 @@ $(document).ready(function() {
     $('#deliveryMethodPoint').addClass('active')
     $('#deliveryMethodLine').addClass('active')
   })
+  // goods in order
+  $('.goods-in-order-accordion-header').click(function () {
+    var $item = $(this).parent();
+    if ($item.hasClass('active')) {
+      $item.removeClass('active');
+      $item.find('.goods-in-order-accordion-content').slideUp();
+    } else {
+      $('.goods-in-order-accordion').removeClass('active');
+      $('.goods-in-order-accordion .goods-in-order-accordion-content').slideUp();
+      $item.addClass('active');
+      $item.find('.goods-in-order-accordion-content').slideDown();
+    }
+  });
 });
 // textarea
 function autoExpand(textarea) {
