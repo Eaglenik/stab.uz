@@ -2701,11 +2701,11 @@ input[type="range"]::-moz-range-thumb {
   line-height: 140%;
   margin-top: 10px;
   max-width: 400px;
-  /* display: -webkit-box;
-  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis; */
+  text-overflow: ellipsis;
 }
 .basket-product_btns{
   border-radius: 100px;
@@ -2790,9 +2790,12 @@ input[type="range"]::-moz-range-thumb {
 }
 .basket-order{
   border-radius: 10px;
-  border: 1px solid var(--yellow);
+  border: 1px solid var(--grey);
   padding: 30px 30px 40px;
   width: 400px;
+}
+.basket-order.active{
+  border: 1px solid var(--yellow);
 }
 .basket-order h6{
   color: var(--black);
@@ -2893,15 +2896,22 @@ input[type="range"]::-moz-range-thumb {
 }
 .basket-order_button{
   width: 100%;
-  color: var(--white);
+  color: var(--grey);
   font-size: 20px;
   font-weight: 600;
-  background: var(--yellow);
+  background: var(--white);
+  border: 1px solid var(--grey);
   border-radius: 100px;
-  border: none;
   outline: none;
   padding: 11px 0 15px 0;
   margin-top: 20px;
+  pointer-events: none;
+}
+.basket-order_button.active{
+  background: var(--yellow);
+  color: var(--white);
+  border: 1px solid var(--yellow);
+  pointer-events: all;
 }
 .basket-back_btn{
   color: var(--black);

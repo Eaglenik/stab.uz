@@ -11,6 +11,11 @@ btn.on("click", function (e) {
     e.preventDefault();
     $("html, body").animate({ scrollTop: 0 }, "300");
 });
+// textarea
+function autoExpand(textarea) {
+  textarea.style.height = '100px';
+  textarea.style.height = `${textarea.scrollHeight}px`;
+}
 // burger
 $(document).ready(function() {
   const myOffcanvas = $('.offcanvas-top');
@@ -1017,7 +1022,7 @@ $(document).ready(function() {
     }, 3000);
     calculateSavings();
     checkBasketProducts();
-  updateQuantity()
+    updateQuantity()
   });
   function displayBasketItems() {
     let basketItems = JSON.parse(localStorage.getItem('basketItems')) || [];
@@ -1100,6 +1105,17 @@ $(document).ready(function() {
     $(".total_savings").text(formatted_savings);
     
   }
+  function updateLocalStorage(input) {
+    var value = parseInt(input.val());
+    var basketItem = input.closest('.basket-product');
+    var index = basketItem.index();
+    var basketItems = JSON.parse(localStorage.getItem('basketItems')) || [];
+
+    if (index >= 0 && index < basketItems.length) {
+      basketItems[index].quantity = value;
+      localStorage.setItem('basketItems', JSON.stringify(basketItems));
+    }
+  }
   displayBasketItems();
   $(document).on('click', '.remove_from_basket', function() {
     let basketItem = $(this).closest('.basket-product');
@@ -1127,17 +1143,21 @@ $(document).ready(function() {
     updateTotals();
     calculateSavings();
     toggleMinusButtonState(input);
+  
+    updateLocalStorage(input);
   });
   $(document).on('click', '.basket-product_minus', function() {
     var input = $(this).siblings('.item_count');
     var value = parseInt(input.val());
-
+  
     if (value > 1) {
       input.val(value - 1);
     }
     updateTotals();
     calculateSavings();
     toggleMinusButtonState(input);
+  
+    updateLocalStorage(input);
   });
   function toggleMinusButtonState(input) {
     var value = parseInt(input.val());
@@ -1156,6 +1176,15 @@ $(document).ready(function() {
       $('.basket-form').attr('action', 'orderLegal.html');
     } else {
       $('.basket-form').attr('action', 'orderNatural.html');
+    }
+  });
+  $('.basket-product_checkbox').change(function() {
+    if ($('.basket-product_checkbox:checked').length > 0) {
+      $('.basket-order_button').addClass('active');
+      $('.basket-order').addClass('active');
+    } else {
+      $('.basket-order_button').removeClass('active');
+      $('.basket-order').removeClass('active');
     }
   });
   updateTotals();
@@ -1267,9 +1296,70 @@ $(document).ready(function() {
       $item.find('.goods-in-order-accordion-content').slideDown();
     }
   });
-});
-// textarea
-function autoExpand(textarea) {
-  textarea.style.height = '100px';
-  textarea.style.height = `${textarea.scrollHeight}px`;
-}
+
+  
+  // let savedBasketItems = JSON.parse(localStorage.getItem('basketItems'));
+  // if (savedBasketItems && savedBasketItems.length > 0) {
+  // savedBasketItems.forEach(function(item) {
+  //   let itemName = item.name;
+  //   let itemQuantity = item.quantity;
+
+  //   // Создаем элементы для отображения товара в корзине
+  //   let productHtml = `<div class="goods-in-order_product">
+  //                         <div class="basket-product">
+  //                           <p class="basket-product_name">${itemName}</p>
+  //                           <input value="${itemQuantity}" type="text" class="item_count" disabled>шт</input>
+  //                         </div>
+  //                       </div>`;
+
+
+                        
+  //   // Добавляем товар в область с товарами в корзине
+  //   $('.goods-in-order_products').append(productHtml);
+  // });
+  // }
+
+
+
+
+  $('.basket-order_button').click(function() {
+    var selectedItems = [];
+    $('.basket-product').each(function() {
+      var inputCheck = $(this).find('.basket-product_checkbox');
+      if ($(inputCheck).is(':checked')) {
+        var item = {
+          name: $(this).find('.basket-product_name').text(),
+          image: $(this).find('.basket-product_img img').attr('src'),
+          quantity: $(this).find('.item_count').val()
+        };
+        selectedItems.push(item);
+      }
+    });
+    localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+  });
+
+
+  $(document).ready(function(){
+    var selectedItems = JSON.parse(localStorage.getItem('selectedItems'));
+    var goodsInOrderContainer = $('.goods-in-order_products');
+    $(goodsInOrderContainer).empty();
+    selectedItems.forEach(function(item) {
+      var goodsInOrderTemplate = `
+        <div class="goods-in-order_product">
+            <div class="basket-product d-flex justify-content-between">
+                <div class="basket-product_img"><img src="${item.image}" alt=""></div>
+                <div>
+                    <p class="basket-product_name">${item.name}</p>
+                    <input value="${item.quantity}" type="text" class="item_count" disabled>шт</input>
+                </div>
+            </div>
+        </div>
+      `;
+      $(goodsInOrderContainer).append(goodsInOrderTemplate);
+    });
+
+  })
+
+})
+
+
