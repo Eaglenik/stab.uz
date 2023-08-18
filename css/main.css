@@ -68,10 +68,11 @@ a{
   width: 100%;
   min-height: 10px;
   padding: 0 40px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 body{
   background: var(--white2);
+  /* background: var(--grey2); */
 }
 /* custom select */
 .custom-select-wrapper {
@@ -922,10 +923,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .goods-addProduct_btns button path{
   stroke: var(--grey2);
 }
-.goods-addProduct_btns button.disabled path{
+.goods-addProduct-minus.disabled path{
   stroke: var(--grey);
 }
-.goods-addProduct_btns button.disabled{
+.goods-addProduct-minus.disabled{
   pointer-events: none;
   cursor: default;
 }
@@ -1419,7 +1420,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   background: url(/image/icons/btn-close.png);
   background-repeat: no-repeat;
   background-size: contain;
-  width: 66px;
+  width: 44px;
   height: 66px;
 }
 .phone-form h4{
@@ -1454,6 +1455,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   white-space: nowrap;
   border: none;
   outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 13px;
 }
 .phone-form button svg{
   stroke: var(--yellow);
@@ -2608,7 +2613,7 @@ input[type="range"]::-moz-range-thumb {
   max-width: 18px;
   text-align: center;
 }
-#success_div{
+.success{
   padding: 23px;
   background: var(--white);
   position: fixed;
@@ -2630,12 +2635,12 @@ input[type="range"]::-moz-range-thumb {
   z-index: 100;
   gap: 28px;
 }
-#success_div img{
+.success img{
   transform: rotate(90deg);
   width: 44px;
   height: 44px;
 }
-#success_div.show{
+.success.show{
   opacity: 1;
   visibility: visible;
 }
@@ -2743,7 +2748,7 @@ input[type="range"]::-moz-range-thumb {
   white-space: nowrap;
 }
 .basket-product_folltrash{
-  display: flex;
+  display: none;
 }
 .basket-product:hover .basket-product_folltrash{
   display: flex;
@@ -2951,6 +2956,7 @@ input[type="range"]::-moz-range-thumb {
   max-width: 926px;
   margin: 0 auto;
   margin-bottom: 90px;
+  margin-top: 50px;
 }
 .empty-basket h6{
   color: var(--black);
@@ -3439,6 +3445,8 @@ input[type="range"]::-moz-range-thumb {
   grid-auto-flow: row;
   justify-items: stretch;
 }
+
+
 
 
 

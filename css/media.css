@@ -803,14 +803,14 @@
   .sign-up_footer p{
     font-size: 16px;
   }
-  #success_div{
+  .success{
     padding: 15px;
     font-size: 17px;
     gap: 20px;
     right: 20px;
     top: 60px;
   }
-  #success_div img{
+  .success img{
     width: 30px;
     height: 30px;
   }
