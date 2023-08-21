@@ -772,7 +772,6 @@ $(document).ready(function() {
   });
 });
 // PRODUCT
-
 // similar categoies
 $(document).ready(function() {
   var maxShown = 15;
@@ -1102,7 +1101,6 @@ $(document).ready(function() {
 
     updateQuantity()
   });
-
   displayBasketItems();
   updateQuantity();
 });
@@ -1514,4 +1512,48 @@ $(document).ready(function() {
   });
 })
 
+// CABINET
+$(document).ready(function() {
+  // tabs
+  $('.cabinet-main .cabinet-main_tab:not(:first)').hide();
+  $('.cabinet-tab').click(function(e) {
+    e.preventDefault();
+    var currentTab = $('#' + $(this).data('tab'));
+    $('.cabinet-tab').removeClass('active');
+    $(this).addClass('active');
+    $('.cabinet-main .cabinet-main_tab').hide();
+    $(currentTab).show();
+  });
+  // active btn
+  $('.cabinet-main_profile--form').each(function() {
+    var $form = $(this);
+    var $inputs = $form.find('input');
+    var $button = $form.find('button');
+    $inputs.on('input', function() {
+      var $input1 = $form.find('input[name="cabinetProfileName"]');
+      var $input2 = $form.find('input[name="cabinetProfilePhone"]');
+      var $input3 = $form.find('input[name="cabinetProfileEmail"]');
+      if ($input1.val() && $input2.val() && $input3.val()) {
+        $button.addClass('active');
+      } else {
+        $button.removeClass('active');
+      }
+    });
+  });
+  $('.addCardForm').each(function() {
+    var $form = $(this);
+    var $inputs = $form.find('input');
+    var $button = $form.find('button');
+    $inputs.on('input', function() {
+      var $input1 = $form.find('input[name="cabinetCardNumber"]');
+      var $input2 = $form.find('input[name="cabinetCardDate"]');
+      var $input3 = $form.find('input[name="cabinetCardCvv"]');
+      if ($input1.val() && $input2.val() && $input3.val()) {
+        $button.addClass('active');
+      } else {
+        $button.removeClass('active');
+      }
+    });
+  });
+});
 
