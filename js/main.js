@@ -1555,5 +1555,58 @@ $(document).ready(function() {
       }
     });
   });
+  // card stars
+  $(".cabinet-main_card--number").each(function() {
+    var fullNumber = $(this).text();
+    if (fullNumber.length === 16) {
+      var maskedNumber = fullNumber.slice(0, 6) + "******" + fullNumber.slice(12);
+      $(this).text(maskedNumber);
+    }
+  });
+  // accordion
+  $('.cabinet-main-accordion-header').click(function () {
+    var $item = $(this).parent();
+    if ($item.hasClass('active')) {
+      $item.removeClass('active');
+      $item.find('.cabinet-main-accordion-content').slideUp();
+    } else {
+      $('.cabinet-main-accordion').removeClass('active');
+      $('.cabinet-main-accordion .cabinet-main-accordion-content').slideUp();
+      $item.addClass('active');
+      $item.find('.cabinet-main-accordion-content').slideDown();
+    }
+  });
+  $('.cabinet-main_goods-in-order-accordion-header').click(function () {
+    var $item = $(this).parent();
+    if ($item.hasClass('active')) {
+      $item.removeClass('active');
+      $item.find('.cabinet-main_goods-in-order-accordion-content').slideUp();
+    } else {
+      $('.cabinet-main_goods-in-order-accordion').removeClass('active');
+      $('.cabinet-main_goods-in-order-accordion .cabinet-main_goods-in-order-accordion-content').slideUp();
+      $item.addClass('active');
+      $item.find('.cabinet-main_goods-in-order-accordion-content').slideDown();
+    }
+  });
+  var windowWidth = $(window).width();
+  var tabElement = $('.cmt');
+  if (windowWidth < 992) {
+    tabElement.removeClass('cabinet-main_tab');
+    tabElement.addClass('offcanvas offcanvas-end');
+  } else {
+    tabElement.removeClass('offcanvas offcanvas-end');
+    tabElement.addClass('cabinet-main_tab');
+  }
+});
+$(window).on('resize', function() {
+  var windowWidth = $(window).width();
+  var tabElement = $('.cmt');
+  if (windowWidth < 992) {
+    tabElement.removeClass('cabinet-main_tab');
+    tabElement.addClass('offcanvas offcanvas-end');
+  } else {
+    tabElement.addClass('cabinet-main_tab');
+    tabElement.removeClass('offcanvas offcanvas-end');
+  }
 });
 

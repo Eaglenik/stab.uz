@@ -83,8 +83,46 @@
   .favorites-goods{
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .goods-in-order_product{
+    width: 100%;
+    max-width: 500px;
+  }
 }
 @media (max-width:992px){
+  .cabinet-main_back--btn{
+    display: flex;
+  }
+  .cabinet-tabs{
+    width: 100%;
+    height: unset;
+    top: 0;
+    position: relative;
+    max-width: unset;
+  }
+  .cabinet-main{
+    width: unset !important;
+  }
+  .cabinet-tabs h6{
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+    margin-top: 10px;
+  }
+  .cabinet-tabs h5,
+  .cabinet-tabs h6{
+    border-bottom: unset;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+  }
+  .cmt{
+    padding: 40px;
+    padding-bottom: 100px;
+    overflow: auto;
+  }
+  .cabinet-main_back--btn h3{
+    font-size: 29px;
+  }
   .pickup-points_map iframe{
     height: 350px;
   }
@@ -246,6 +284,25 @@
   }
 }
 @media (max-width:768px){
+  .cabinet-main-accordion-arrow{
+    display: none;
+  }
+  .cabinet-main_goods-in-order-accordion-header .cabinet-main-accordion-arrow{
+    display: flex;
+  }
+  .cabinet-main-accordion-header{
+    flex-direction: column;
+  }
+  .cabinet-main_inpt{
+    width: 49%;
+  }
+  .cmt{
+    padding: 20px;
+    padding-bottom: 100px;
+  }
+  .cabinet-main_back--btn h3 {
+    font-size: 23px;
+  }
   .category-main_bar{
     margin-bottom: unset;
   }
@@ -431,6 +488,46 @@
   }
 }
 @media (max-width:576px){
+  .cabinet-order_mobile{
+    padding: 20px 0;
+  }
+  .cabinet-main_statuses--paid, .cabinet-main_statuses--delivery{
+    min-width: unset;
+  }
+  .cabinet-main_goods-in-order-products a{
+    width: 100%;
+  }
+  .cabinet-main-accordion-table td{
+    font-size: 15px;
+    width: 50%;
+  }
+  .cabinet-main_inpt{
+    width: 100%;
+  }
+  .cmt{
+    padding-bottom: 150px;
+  }
+  .cabinet-main_submit{
+    flex-direction: column;
+  }
+  .cabinet-main_submit button{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  .addCardForm{
+    padding-bottom: 50px;
+  }
+  .cabinet-main_active--orders--btns{
+    flex-direction: column;
+  }
+  .cabinet-main_active--orders a{
+    width: 100%;
+    margin-top: 20px;
+  }
+  .cabinet-main_reviews--img{
+    display: none;
+  }
   .product_modal--slider{
     padding: 100px 0;
   }
