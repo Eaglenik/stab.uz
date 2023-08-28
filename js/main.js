@@ -16,6 +16,7 @@ function autoExpand(textarea) {
   textarea.style.height = '100px';
   textarea.style.height = `${textarea.scrollHeight}px`;
 }
+  
 // burger
 $(document).ready(function() {
   const myOffcanvas = $('.offcanvas-top');
